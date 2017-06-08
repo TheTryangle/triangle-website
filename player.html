@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Stream Player</title>
+    </head>
+    <body>
+
+        <h1>Stream Player</h1>
+
+        <video id="videoplayer" controls autoplay>
+        </video>
+
+        <script type="text/javascript">
+
+            var video = document.getElementById('videoplayer');
+            var videoSocket = new WebSocket('ws://145.49.35.215:1234/receive');
+            //videoSocket.binaryType = "arraybuffer";
+
+            var videoQueue = [];
+
+            var playing = false;
+
+            video.addEventListener('ended', function(){
+
+                playing = false;
+                playVideo();
+
+            }, false);
+
+            // When the connection is open, send some data to the server
+            videoSocket.onopen = function () {
+                videoSocket.send('Ping'); // Send the message 'Ping' to the server
+            };
+
+            // Log errors
+            videoSocket.onerror = function (error) {
+                console.log('WebSocket Error ' + error);
+            };
+
+            videoSocket.onmessage = function(event){
+
+                console.log(event.data);
+
+                videoQueue.push(URL.createObjectURL(event.data));
+
+                if(!playing)
+                {
+                    playVideo();
+                }
+            }
+
+            function playVideo()
+            {
+                if(videoQueue.length > 0)
+                {
+                    playing = true;
+                    video.src = videoQueue.shift();
+                    video.load();
+                }
+            }
+
+        </script>
+    </body>
+</html>
