@@ -32,7 +32,7 @@ videoSocket.onmessage = function(event) {
     if(!playing) {
         playVideo();
     }
-}
+};
 
 // Start Video
 function playVideo() {
