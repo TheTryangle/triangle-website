@@ -1,5 +1,3 @@
-var bytes = [];
-
 // Create WebSocket connection.
 const socket = new WebSocket('ws://localhost:1234/send');
 
