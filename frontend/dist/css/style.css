@@ -1,0 +1,33 @@
+body {padding-top:60px; overflow:hidden;}
+.bar {height:60px;width:100%;display: table;}
+.sidebar-title {display:table-cell; vertical-align: middle;}
+.sidebar-title * {display:inline;}
+
+/* Stream page*/
+.sidebar, .stream, .chat {height:calc(100vh - 60px); position: relative;}
+.sidebar, .chat {background-color:#1E1E1E;}
+.stream {background-color:#141414;}
+
+.stream-link {margin-bottom:25px;}
+.stream-link, .stream-link:hover, .stream-link:active, .stream-link:focus {display:block; text-decoration:none; color:inherit;}
+.stream-link .thumb {max-width:100%; width:198px; height:111px; background-color:#0DD4A1; position:relative;}
+.stream-link-title {font-size:12px; display:block;}
+.stream-link-name {color:#FFFFFF; position:absolute; left:0; top:0; margin-top:5px; margin-left:5px;}
+
+.stream .bar {background-color:#282828;}
+.video-container > div > div {height: calc(50vh - 60px);}
+.stream video {max-width:100%;}
+
+.chat .bar, .chat-form {background-color:#323232;z-index: 9;}
+.chatbox {height: calc(100vh - 271px);position:relative;z-index:1;overflow-y:scroll;}
+.chat-form {height: 130px;padding-top:15px;position: absolute;width: 100%;right: 0;bottom: 0;left: 0;}
+.chat-button {float:right; margin-top:15px;}
+.bubble {width:100%;}
+.bubble > span {display:block;}
+
+/* Overview page */
+.stream-overview .bar {background-color:#323232;}
+.stream-item a {display:block; text-decoration:none; color:inherit;}
+.stream-item .thumb {max-width:100%;width:334px;height:188px;background-color:#0DD4A1;position: relative;}
+.stream-item .thumb > span {display:block;padding: 10px 0 0 10px;font-size: 25px;line-height: 25px;font-weight: bold;}
+.stream-item a > span {display:block; margin-top:5px;}
