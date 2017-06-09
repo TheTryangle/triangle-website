@@ -7,8 +7,6 @@ var videoPlayer = document.getElementById('videoplayer');
 
 var playing = false;
 
-// Debugging //
-videoSocket.binaryType = "arraybuffer";
 // When the connection is open, send some data to the server
 videoSocket.onopen = function() {
     videoSocket.send('Ping'); // Send the message 'Ping' to the server
