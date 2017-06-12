@@ -68,11 +68,19 @@ function muteVideo() {
   }
 }
 
-// Function to set video to fullscreen.
+// Function to set or unset video to fullscreen.
 function fullscreenVideo() {
   var video = $(this).parent().parent().find("video");
 
-  // Fullscreen logic.
+  if(video.parent().hasClass("fullscreen")) {
+    $.fullscreen.exit();
+    video.parent().removeClass("fullscreen");
+    return false;
+  } else {
+    video.fullscreen();
+    video.parent().addClass("fullscreen");
+    return false;
+  }
 
 }
 

@@ -8,7 +8,7 @@ body {padding-top:60px; overflow:hidden;}
 .sidebar, .stream, .chat {height:calc(100vh - 60px); position: relative;}
 .sidebar, .chat {background-color:#1E1E1E;}
 .sidebar {overflow-y:auto;}
-  .stream {background-color:#141414;}
+.stream {background-color:#141414;}
 
 .stream-link {margin-bottom:25px;}
 .stream-link, .stream-link:hover, .stream-link:active, .stream-link:focus {display:block; text-decoration:none; color:inherit;}
@@ -27,6 +27,8 @@ body {padding-top:60px; overflow:hidden;}
 .fullscreen {position:absolute; right:0; bottom:0;}
 .stream-controls > div {position: absolute; background-color:rgba(0,0,0,0.5); padding:5px;}
 .stream-controls > div > span {display:block; color:#FFF;}
+video::-webkit-media-controls {display:none!important;}
+.fullscreen .stream-controls {display:block!important; z-index:9999999999;}
 
 .chat .bar, .chat-form {background-color:#323232;z-index: 9;}
 .chatbox {height: calc(100vh - 250px);position:relative;z-index:1;overflow-y:scroll;padding-left:15px;}
