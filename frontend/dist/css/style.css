@@ -27,7 +27,9 @@ body {padding-top:60px; overflow:hidden;}
 
 /* Overview page */
 .stream-overview .bar {background-color:#323232;}
-.stream-item a {display:block; text-decoration:none; color:inherit;}
+.stream-item a {display:block;text-decoration:none;color:inherit;margin-top: 50px;padding: 15px; background-color:#323232; transition:0.3s;}
+.stream-item a:hover {background-color:#141414;}
 .stream-item .thumb {max-width:100%;width:334px;height:188px;background-color:#0DD4A1;position: relative;}
 .stream-item .thumb > span {display:block;padding: 10px 0 0 10px;font-size: 25px;line-height: 25px;font-weight: bold;}
 .stream-item a > span {display:block; margin-top:5px;}
+.stream-items {overflow-y:scroll;height: calc(100vh - 120px);}
