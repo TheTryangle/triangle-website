@@ -34,34 +34,84 @@
     <div class="row">
       <div class="container-fluid bar">
         <span class="sidebar-title">
-          <a href="#">[Name streamer]</a>
+          <span>Streams you're watching</span>
         </span>
       </div>
     </div>
     <div class="video-container">
       <div class="row">
-        <div class="col-xs-6">
-          <video src="https://08-lvl3-pdl.vimeocdn.com/01/4385/1/46926279/110968829.mp4?expires=1496925441&token=06013cc5527f7a932a89a" autoplay></video>
-          <span class="stream-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
-          <a href="#">[Name streamer]</a>
+
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+          <div class="video">
+            <video autoplay>
+              <source src="dist\images\dummyvideo.mp4" type="video/mp4">
+            </video>
+
+            <div class="stream-controls">
+              <div>
+                <span class="stream-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+                <span class="streamer">[Name streamer]</span>
+              </div>
+              <button type="button" class="mute">Mute</button>
+              <button type="button" class="fullscreen">Full-Screen</button>
+            </div>
+          </div>
         </div>
-        <div class="col-xs-6">
-          <video src="https://08-lvl3-pdl.vimeocdn.com/01/4385/1/46926279/110968829.mp4?expires=1496925441&token=06013cc5527f7a932a89a" autoplay></video>
-          <span class="stream-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
-          <a href="#">[Name streamer]</a>
+
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+          <div class="video">
+            <video autoplay>
+              <source src="dist\images\dummyvideo.mp4" type="video/mp4">
+            </video>
+
+            <div class="stream-controls">
+              <div>
+                <span class="stream-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+                <span class="streamer">[Name streamer]</span>
+              </div>
+              <button type="button" class="mute">Mute</button>
+              <button type="button" class="fullscreen">Full-Screen</button>
+            </div>
+          </div>
         </div>
+
       </div>
       <div class="row">
-        <div class="col-xs-6">
-          <video src="https://08-lvl3-pdl.vimeocdn.com/01/4385/1/46926279/110968829.mp4?expires=1496925441&token=06013cc5527f7a932a89a" autoplay></video>
-          <span class="stream-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
-          <a href="#">[Name streamer]</a>
+
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+          <div class="video">
+            <video autoplay>
+              <source src="dist\images\dummyvideo.mp4" type="video/mp4">
+            </video>
+
+            <div class="stream-controls">
+              <div>
+                <span class="stream-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+                <span class="streamer">[Name streamer]</span>
+              </div>
+              <button type="button" class="mute">Mute</button>
+              <button type="button" class="fullscreen">Full-Screen</button>
+            </div>
+          </div>
         </div>
-        <div class="col-xs-6">
-          <video src="https://08-lvl3-pdl.vimeocdn.com/01/4385/1/46926279/110968829.mp4?expires=1496925441&token=06013cc5527f7a932a89a" autoplay></video>
-          <span class="stream-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
-          <a href="#">[Name streamer]</a>
+
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+          <div class="video">
+            <video autoplay>
+              <source src="dist\images\dummyvideo.mp4" type="video/mp4">
+            </video>
+
+            <div class="stream-controls">
+              <div>
+                <span class="stream-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+                <span class="streamer">[Name streamer]</span>
+              </div>
+              <button type="button" class="mute">Mute</button>
+              <button type="button" class="fullscreen">Full-Screen</button>
+            </div>
+          </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -69,30 +119,32 @@
     <div class="row">
       <div class="container-fluid bar">
         <span class="sidebar-title">
-          <span>Chat : [Name streamer]</span>
+          <span>Chat of [Name streamer]</span>
         </span>
       </div>
     </div>
-    <div class="chatbox">
-      <div class="bubble">
-        <a href="#">[Name user]</a>
-        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
-      </div>
-      <div class="bubble">
-        <a href="#">[Name user]</a>
-        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
-      </div>
-      <div class="bubble">
-        <a href="#">[Name user]</a>
-        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
-      </div>
-      <div class="bubble">
-        <a href="#">[Name user]</a>
-        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
-      </div>
-      <div class="bubble">
-        <a href="#">[Name user]</a>
-        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+    <div class="row">
+      <div class="chatbox">
+        <div class="bubble">
+          <a href="#">[Name user]</a>
+          <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+        </div>
+        <div class="bubble">
+          <a href="#">[Name user]</a>
+          <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+        </div>
+        <div class="bubble">
+          <a href="#">[Name user]</a>
+          <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+        </div>
+        <div class="bubble">
+          <a href="#">[Name user]</a>
+          <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+        </div>
+        <div class="bubble">
+          <a href="#">[Name user]</a>
+          <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+        </div>
       </div>
     </div>
     <div class="container-fluid chat-form">
