@@ -1,7 +1,7 @@
 <?php include("header.php"); ?>
 <div class="row">
-    <div class="col-xs-2 sidebar">
-      <div class="row">
+  <div class="col-xs-2 sidebar">
+    <div class="row">
       <div class="container-fluid bar">
         <span class="sidebar-title">
           <span>Streams</span>
