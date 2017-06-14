@@ -1,3 +1,21 @@
+function getStreamList()
+{
+    listSocket.send("LIST");
+}
+
+function switchStream(id, playerNumber)
+{
+    if(typeof videoPlayers[playerNumber] === "undefined")
+    {
+        videoPlayers[playerNumber] = new VideoPlayer(document.getElementById('videoplayer' + playerNumber));
+        videoPlayers[playerNumber].openWebSocket(id);
+    }
+    else
+    {
+        videoPlayers[playerNumber].watch(id);
+    }
+}
+
 var videoPlayers = [];
 
 videoPlayers[1] = new VideoPlayer(document.getElementById('videoplayer1'));
@@ -17,6 +35,7 @@ listSocket.onopen = function(){
 
 listSocket.onmessage = function(event){
     let streams;
+
     //Probably JSON, try parsing it
     try{
         streams = JSON.parse(event.data);
@@ -31,8 +50,8 @@ listSocket.onmessage = function(event){
     {
         let li = document.createElement('li');
         li.class = 'stream';
-        li.dataset.streamid = stream.id;
-        li.innerHTML = '<a href="#">'+ stream.id +'</a>';
+        li.dataset.streamid = stream.ClientID;
+        li.innerHTML = '<a href="#">'+ stream.ClientID +'</a>';
 
         for(let streamlist of streamsList)
         {
@@ -47,21 +66,3 @@ $(document).on('click', '.streamslist > li', function(e){
     switchStream($(this).data('streamid'), Number($(this).closest('div.videoplayercontainer').data('player')));
 
 });
-
-function getStreamList()
-{
-    listSocket.send("LIST");
-}
-
-function switchStream(id, playerNumber)
-{
-    if(typeof videoPlayers[playerNumber] === "undefined")
-    {
-        videoPlayers[playerNumber] = new VideoPlayer(document.getElementById('videoplayer' + playerNumber));
-        videoPlayers[playerNumber].openWebSocket(id);
-    }
-    else
-    {
-        videoPlayers[playerNumber].watch(id);
-    }
-}
