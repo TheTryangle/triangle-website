@@ -6,14 +6,46 @@
 
     <script src="js/lib/jquery-3.2.1.min.js"></script>
     <script language="JavaScript" type="text/javascript" src="js/lib/jsrsasign-latest-all-min.js"></script>
+    <script src="js/VideoPlayer.js"></script>
     <script src="js/stream.js" defer></script>
 </head>
 <body>
     <h1>Stream Player</h1>
-    <video id="videoplayer" autoplay></video>
 
-    <ul id="streamslist">
+    <div class="videoplayercontainer" data-player="1">
+        <video id="videoplayer1" autoplay></video>
 
-    </ul>
+        <p>Select a stream to view:</p>
+        <ul class="streamslist">
+
+        </ul>
+    </div>
+
+    <div class="videoplayercontainer" data-player="2">
+        <video id="videoplayer2" autoplay></video>
+
+        <p>Select a stream to view:</p>
+        <ul class="streamslist">
+
+        </ul>
+    </div>
+
+    <div class="videoplayercontainer" data-player="3">
+        <video id="videoplayer3" autoplay></video>
+
+        <p>Select a stream to view:</p>
+        <ul class="streamslist">
+
+        </ul>
+    </div>
+
+    <div class="videoplayercontainer" data-player="4">
+        <video id="videoplayer4" autoplay></video>
+
+        <p>Select a stream to view:</p>
+        <ul class="streamslist">
+
+        </ul>
+    </div>
 </body>
 </html>
