@@ -1,40 +1,36 @@
-if (!Array.prototype.last){
-    Array.prototype.last = function(){
-        return this[this.length - 1];
-    };
-};
+// Video Data
+var videoSocket;
+// Video Queue
+var videoQueue = [];
+// Video Player
+var videoPlayer = document.getElementById('videoplayer');
+var streamsList = document.getElementById('streamslist');
 
-$(document).ready(function(){
+var playing = false;
 
-    // Video Data
-    var videoSocket = new WebSocket('ws://localhost:1234/receive');
-    // Video Queue
-    var videoQueue = [];
-    // Video Player
-    var videoPlayer = document.getElementById('videoplayer');
+var pubKey;
 
-    var playing = false;
+var lastVideo;
 
-    var pubKey;
+//Event handlers
+$(document).on('click', '#streamslist > li', function(e){
 
-    var lastVideo;
+    switchStream($(this).data('streamid'));
 
-    // When the connection is open, send some data to the server
+});
+
+function openWebSocket()
+{
+    videoSocket = new WebSocket('ws://localhost:1234/receive');
+
     videoSocket.onopen = function() {
         //Ask for public key from server
         videoSocket.send('PUBKEY');
-    };
+        videoSocket.send('LIST');
 
-    //Log errors
-    videoSocket.onerror = function(error) {
-        console.log('WebSocket Error ' + error);
+        //Register a function to check for a list of streams
+        setInterval(getStreamList, 10000);
     };
-
-    //Play next fragment when the video ends.
-    videoPlayer.addEventListener('ended', function() {
-        playing = false;
-        playVideo();
-    }, false);
 
     //Receive video and play fragment.
     videoSocket.onmessage = function(event) {
@@ -55,16 +51,6 @@ $(document).ready(function(){
             //Indicates we have received the public key
             if(event.data.startsWith('-----BEGIN PUBLIC KEY-----'))
             {
-                /*
-                 //Remove begin/end public key lines.
-                 pubKey = event.data;
-                 pubKey = pubKey.split("\n");
-                 pubKey.shift();
-                 pubKey.pop();
-
-                 pubKey = pubKey.join("\n");
-                 */
-
                 pubKey = event.data;
             }
             else if(event.data.startsWith("SIGN:"))
@@ -75,52 +61,102 @@ $(document).ready(function(){
             {
                 console.log(event.data);
             }
+            else
+            {
+                let streams;
+                //Probably JSON, try parsing it
+                try{
+                    streams = JSON.parse(event.data);
+                }
+                catch(e){
+                    return;
+                }
+
+                streamsList.innerHTML = '';
+
+                for(let stream of streams)
+                {
+                    let li = document.createElement('li');
+                    li.class = 'stream';
+                    li.dataset.streamid = stream.id;
+                    li.innerHTML = '<a href="#">'+ stream.id +'</a>';
+
+                    streamsList.appendChild(li);
+                }
+            }
+        }
+
+        //Log errors
+        videoSocket.onerror = function(error) {
+            console.log('WebSocket Error ' + error);
+        };
+
+        //Try to reconnect in 5 seconds
+        videoSocket.onclose = function(){
+            setTimeout(function(){openWebSocket()}, 5000);
+        };
+    };
+}
+
+openWebSocket();
+
+//Play next fragment when the video ends.
+videoPlayer.addEventListener('ended', function() {
+    playing = false;
+    playVideo();
+}, false);
+
+
+//If a video is queued, play it.
+function playVideo()
+{
+    if(videoQueue.length > 0)
+    {
+        playing = true;
+        videoPlayer.src = videoQueue.shift();
+        videoPlayer.load();
+    }
+}
+
+function checkHash(encryptedHash)
+{
+    let base64data;
+
+    let reader = new window.FileReader();
+
+    //Convert blob to base64.
+    reader.readAsDataURL(lastVideo);
+    reader.onloadend = function() {
+        base64data = reader.result;
+
+        base64data = base64data.substr(base64data.indexOf(',') + 1);
+
+        //Initialize signature checkers
+        let sig = new KJUR.crypto.Signature({"alg": "SHA1withRSA"});
+
+        sig.init(pubKey); // signer's certificate
+        // update data
+        sig.updateString(base64data);
+
+        // verify signature
+        if(!sig.verify(encryptedHash))
+        {
+            console.log("Signature verification failed!");
+
+            let alertBox = document.createElement('div');
+            alertBox.class = 'alert';
+            alertBox.innerHTML = '<p>Possible tampering detected! Please reload the page to try again.</p>';
+            document.body.appendChild(alertBox);
         }
     };
+}
 
-    //If a video is queued, play it.
-    function playVideo()
-    {
-        if(videoQueue.length > 0)
-        {
-            playing = true;
-            videoPlayer.src = videoQueue.shift();
-            videoPlayer.load();
-        }
-    }
+function getStreamList()
+{
+    videoSocket.send("LIST")
+}
 
-    function checkHash(encryptedHash)
-    {
-        var base64data;
-
-        var reader = new window.FileReader();
-
-        //Convert blob to base64.
-        reader.readAsDataURL(lastVideo);
-        reader.onloadend = function() {
-            base64data = reader.result;
-
-            base64data = base64data.substr(base64data.indexOf(',') + 1);
-
-            //Initialize signature checkers
-            var sig = new KJUR.crypto.Signature({"alg": "SHA1withRSA"});
-
-            sig.init(pubKey); // signer's certificate
-            // update data
-            sig.updateString(base64data);
-
-            // verify signature
-            if(!sig.verify(encryptedHash))
-            {
-                console.log("Signature verification failed!");
-
-                var html = `<div class="alert">
-                                <p>Possible tampering detected! Please reload the page to try again.</p>
-                            </div>`;
-
-                $(html).appendTo(document.body);
-            }
-        };
-    }
-
-});
+function switchStream(id)
+{
+    videoSocket.send('WATCH ' + id);
+}
