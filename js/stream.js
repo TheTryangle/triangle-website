@@ -3,18 +3,18 @@
  */
 
 //Open a websocket for a list of streams
-var listSocket = new WebSocket("ws://localhost:1234/receive");
+var listSocket = new WebSocket('ws://localhost:1234/receive');
 
 function getStreamList()
 {
-    listSocket.send("LIST");
+    listSocket.send('LIST');
 }
 
 var videoPlayers = [];
 
 function switchStream(id, playerNumber)
 {
-    if(typeof videoPlayers[playerNumber] === "undefined")
+    if(typeof videoPlayers[playerNumber] === 'undefined')
     {
         videoPlayers[playerNumber] = new VideoPlayer(document.getElementById('videoplayer' + playerNumber));
         videoPlayers[playerNumber].openWebSocket(id);
@@ -23,6 +23,11 @@ function switchStream(id, playerNumber)
     {
         videoPlayers[playerNumber].watch(id);
     }
+}
+
+function challengeServer(pubKey)
+{
+
 }
 
 videoPlayers[1] = new VideoPlayer(document.getElementById('videoplayer1'));

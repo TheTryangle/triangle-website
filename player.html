@@ -5,9 +5,13 @@
     <title>Stream Player</title>
 
     <script src="js/lib/jquery-3.2.1.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
     <script language="JavaScript" type="text/javascript" src="js/lib/jsrsasign-latest-all-min.js"></script>
+    <script src="js/lib/forge.min.js"></script>
     <script src="js/VideoPlayer.js"></script>
     <script src="js/stream.js" defer></script>
+
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
 </head>
 <body>
     <h1>Stream Player</h1>
@@ -46,6 +50,17 @@
         <ul class="streamslist">
 
         </ul>
+    </div>
+
+    <div id="certconfirmationdialog" style="display: none;">
+        <p>An unknown certificate was received from the server. Are you sure you want to trust this certificate?</p>
+        <p>Hash of the server's public key:</p>
+
+        <p id="certconfirmationbox"></p>
+
+        <button id="cert-confirm">Confirm and trust certificate</button>
+        <button id="cert-temporary">Confirm only once</button>
+        <button id="cert-cancel">Cancel</button>
     </div>
 </body>
 </html>

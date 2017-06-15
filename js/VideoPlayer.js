@@ -11,6 +11,12 @@ class VideoPlayer{
 
         this.webSocket = null;
 
+        //As long as the streaming server has not verified its identity yet, this property is false.
+        this.trustedConnection = false;
+
+        //String used for challenge.
+        this.challenge = '';
+
         //Workaround for "this" falling out of scope in closures.
         var _this = this;
 
@@ -55,15 +61,15 @@ class VideoPlayer{
                 //Indicates we have received the public key
                 if(event.data.startsWith('-----BEGIN PUBLIC KEY-----'))
                 {
-                    _this.pubKey = event.data;
+                    _this._challengeServer(event.data);
                 }
-                else if(event.data.startsWith('SIGN:'))
+                else if(event.data.startsWith('SIGN: '))
                 {
-                    _this._checkHash(event.data.substr(6));
+                    _this._checkHash(event.data.replace('SIGN: ', ''));
                 }
-                else if(event.data.startsWith('EXPECT:'))
+                else if(event.data.startsWith('CHALLENGERESPONSE: '))
                 {
-                    console.log(event.data);
+                    _this._verifyChallenge(event.data.replace('CHALLENGERESPONSE: ', ''));
                 }
             }
         };
@@ -96,9 +102,34 @@ class VideoPlayer{
         }
     }
 
+    _challengeServer(pubKey){
+        let rsa = forge.pki.rsa;
+
+        this.challenge = btoa(forge.random.getBytesSync(32));
+        console.log("Random bytes: " + this.challenge);
+
+        let pubKeyForge = forge.pki.publicKeyFromPem(pubKey);
+
+        let challengeMessage = btoa(pubKeyForge.encrypt(this.challenge));
+
+        this.webSocket.send('CHALLENGE: ' + challengeMessage);
+    }
+
+    _verifyChallenge(msg){
+        if(msg === this.challenge)
+        {
+            this.trustedConnection = true;
+            console.log('Verification successful!');
+        }
+        else
+        {
+            console.log('Verification failed! The server might be an impostor.');
+        }
+    }
+
     _checkHash(encryptedHash)
     {
-        var _this = this;
+        let _this = this;
 
         let base64data;
 
