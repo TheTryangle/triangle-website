@@ -21,19 +21,25 @@ $(document).ready(function(){
 // Temporary interval to test the chat.
 window.setInterval(function() {
 
-  // Calculates height of the chatbox.
-  var chatboxHeight = $(".chatbox").height();
+  $(".chat-box").find(".inside").each(function() {
 
-  //Add comment to chatbox.
-  $(".chatbox").append('<div class="bubble"> <a href="#">[Name user]</a> <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span> </div>');
+    // Calculates height of the chatbox.
+    var chat = $(this);
+    var chatboxHeight = $(chat).height();
 
-  // Check if chatbox is scrolled to bottom.
-  var scrolledToBottom = checkScroll(".chatbox");
+    // Check if chatbox is scrolled to bottom.
+    var scrolledToBottom = checkScroll(chat);
 
-  // Chatbox stuck to bottom if scrolled all the way down.
-  if(scrolledToBottom == true) {
-    $(".chatbox").scrollTop($(".chatbox").scrollTop() + chatboxHeight);
-  }
+    //Add comment to chatbox.
+    $(chat).append('<div class="bubble"> <span>[Name user]</span>: <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span> </div>');
+
+    // Chatbox stuck to bottom if scrolled all the way down.
+    if(scrolledToBottom == true) {
+      $(chat).scrollTop($(chat).scrollTop() + chatboxHeight);
+    }
+
+  });
+
 }, 3000);
 
 // Functions ---------------------------------------------------------
@@ -43,6 +49,7 @@ function checkScroll(e) {
   if($(e).scrollTop() + $(e).innerHeight() >= $(e)[0].scrollHeight) {
     return true;
   }
+  return false;
 }
 
 // Function to show video controls.
