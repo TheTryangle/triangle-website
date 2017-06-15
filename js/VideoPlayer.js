@@ -11,7 +11,7 @@ class VideoPlayer{
 
         this.webSocket = null;
 
-        //Workaround for "this" falling out of scope in JS.
+        //Workaround for "this" falling out of scope in closures.
         var _this = this;
 
         //Play next fragment when the video ends.
@@ -30,7 +30,7 @@ class VideoPlayer{
             //Ask for public key from server
             _this.webSocket.send('PUBKEY');
 
-            if(typeof idToWatch !== "undefined")
+            if(typeof idToWatch !== 'undefined')
             {
                 _this.watch(idToWatch);
             }
@@ -57,11 +57,11 @@ class VideoPlayer{
                 {
                     _this.pubKey = event.data;
                 }
-                else if(event.data.startsWith("SIGN:"))
+                else if(event.data.startsWith('SIGN:'))
                 {
                     _this._checkHash(event.data.substr(6));
                 }
-                else if(event.data.startsWith("EXPECT:"))
+                else if(event.data.startsWith('EXPECT:'))
                 {
                     console.log(event.data);
                 }
@@ -112,7 +112,7 @@ class VideoPlayer{
             base64data = base64data.substr(base64data.indexOf(',') + 1);
 
             //Initialize signature checkers
-            let sig = new KJUR.crypto.Signature({"alg": "SHA1withRSA"});
+            let sig = new KJUR.crypto.Signature({'alg': 'SHA1withRSA'});
 
             sig.init(_this.pubKey); // signer's certificate
             // update data
@@ -121,7 +121,7 @@ class VideoPlayer{
             // verify signature
             if(!sig.verify(encryptedHash))
             {
-                console.log("Signature verification failed!");
+                console.log('Signature verification failed!');
 
                 let alertBox = document.createElement('div');
                 alertBox.class = 'alert';

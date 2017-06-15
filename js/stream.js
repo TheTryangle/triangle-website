@@ -1,3 +1,7 @@
+/**
+ * @global VideoPlayer
+ */
+
 //Open a websocket for a list of streams
 var listSocket = new WebSocket("ws://localhost:1234/receive");
 
@@ -48,10 +52,17 @@ listSocket.onmessage = function(event){
 
     for(let stream of streams)
     {
+        //Create li element to insert.
         let li = document.createElement('li');
         li.class = 'stream';
         li.dataset.streamid = stream.ClientID;
-        li.innerHTML = '<a href="#">'+ stream.ClientID +'</a>';
+
+        //Create anchor element for li.
+        //createTextNode() is used to safely insert the stream ID without any XSS.
+        let anchor = document.createElement('a');
+        anchor.href = '#';
+        anchor.appendChild(document.createTextNode(stream.clientID));
+        li.appendChild(anchor);
 
         for(let streamlist of streamsList)
         {
