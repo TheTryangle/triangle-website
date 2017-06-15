@@ -1,7 +1,12 @@
+//Open a websocket for a list of streams
+var listSocket = new WebSocket("ws://localhost:1234/receive");
+
 function getStreamList()
 {
     listSocket.send("LIST");
 }
+
+var videoPlayers = [];
 
 function switchStream(id, playerNumber)
 {
@@ -16,15 +21,10 @@ function switchStream(id, playerNumber)
     }
 }
 
-var videoPlayers = [];
-
 videoPlayers[1] = new VideoPlayer(document.getElementById('videoplayer1'));
 videoPlayers[1].openWebSocket();
 
 var streamsList = document.getElementsByClassName('streamslist');
-
-//Open a websocket for a list of streams
-var listSocket = new WebSocket("ws://localhost:1234/receive");
 
 listSocket.onopen = function(){
     //Register a function to check for a list of streams
