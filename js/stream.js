@@ -61,7 +61,7 @@ listSocket.onmessage = function(event){
         //createTextNode() is used to safely insert the stream ID without any XSS.
         let anchor = document.createElement('a');
         anchor.href = '#';
-        anchor.appendChild(document.createTextNode(stream.clientID));
+        anchor.appendChild(document.createTextNode(stream.ClientID));
         li.appendChild(anchor);
 
         for(let streamlist of streamsList)
