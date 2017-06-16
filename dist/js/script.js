@@ -16,7 +16,19 @@ $(document).ready(function(){
   // Show register form on click.
 	$('#register-form-link').on("click", showRegister);
 
+  // If button on keyboard is pressed.
+  $(this).keyup(function(e) {
+      // If Escape is pressed.
+       if (e.keyCode == 27) {
+         console.log("text");
+         $(document).find(".isFullscreen").removeClass("isFullscreen");
+         return false;
+      }
+  });
+
 });
+
+
 
 // Temporary interval to test the chat.
 window.setInterval(function() {
@@ -77,13 +89,14 @@ function muteVideo() {
 // Function to set or unset video to fullscreen.
 function fullscreenVideo() {
   var video = $(this).parent().parent().find("video");
-  if(video.parent().hasClass("fullscreen")) {
+  if(video.parent().hasClass("isFullscreen")) {
     $.fullscreen.exit();
-    video.parent().removeClass("fullscreen");
+    video.parent().removeClass("isFullscreen");
     return false;
   } else {
     video.fullscreen();
-    video.parent().addClass("fullscreen");
+    document.addEventListener('keyup', keyUp, false);
+    video.parent().addClass("isFullscreen");
     return false;
   }
 }
