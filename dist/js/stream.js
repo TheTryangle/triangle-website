@@ -36,7 +36,7 @@ function askTrustPublicKey(pubKey, videoPlayer)
 {
     $('#certconfirmationdialog').dialog({
         resizable: false,
-        height: "auto",
+        height: 'auto',
         width: 400,
         modal: true,
         open: function(){
@@ -50,7 +50,7 @@ function askTrustPublicKey(pubKey, videoPlayer)
 
         },
         buttons: {
-            'Confirm and trust certificate': function(){
+            'Confirm and trust certificate'(){
                 trustedCertificates.push(pubKey);
                 localStorage.setItem('trustedCerts', JSON.stringify(trustedCertificates));
 
@@ -59,12 +59,12 @@ function askTrustPublicKey(pubKey, videoPlayer)
                 $(this).dialog('close');
             },
 
-            'Confirm once': function(){
+            'Confirm once'(){
                 videoPlayer.trustPublicKey(pubKey);
                 $(this).dialog('close');
             },
 
-            'Cancel': function(){
+            'Cancel'(){
                 $(this).dialog('close');
             }
         }

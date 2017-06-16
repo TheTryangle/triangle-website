@@ -114,7 +114,6 @@ class VideoPlayer{
         let rsa = forge.pki.rsa;
 
         this.challenge = btoa(forge.random.getBytesSync(32));
-        console.log("Random bytes: " + this.challenge);
 
         let pubKeyForge = forge.pki.publicKeyFromPem(pubKey);
 
