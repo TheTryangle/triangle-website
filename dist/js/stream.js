@@ -14,8 +14,10 @@ var videoPlayers = [];
 
 function switchStream(id, playerNumber)
 {
+    console.log(id + " - " + playerNumber);
     if(typeof videoPlayers[playerNumber] === "undefined")
     {
+        console.log(document.getElementById('videoplayer' + playerNumber));
         videoPlayers[playerNumber] = new VideoPlayer(document.getElementById('videoplayer' + playerNumber));
         videoPlayers[playerNumber].openWebSocket(id);
     }
@@ -74,6 +76,6 @@ listSocket.onmessage = function(event){
 //Event handlers
 $(document).on('click', '.streamslist > li', function(e){
 
-    switchStream($(this).data('streamid'), Number($(this).closest('div.videoplayercontainer').data('player')));
+    switchStream($(this).data('streamid'), Number($(this).closest(".video-outside").find('div.video').data('player')));
 
 });

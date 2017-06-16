@@ -1,4 +1,4 @@
-<?php include("header.php"); ?>
+<?php include "inc/header.php"; ?>
 <div class="row">
   <!-- <div class="col-xs-2 sidebar">
     <div class="row">
@@ -41,11 +41,9 @@
     <div class="video-container">
       <div class="row">
 
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-          <div class="video">
-            <video autoplay>
-              <source src="dist\images\dummyvideo.mp4" type="video/mp4">
-            </video>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 video-outside">
+          <div class="video" data-player="1">
+            <video id="videoplayer1" autoplay></video>
             <div class="stream-controls">
               <div>
                 <span class="stream-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
@@ -60,7 +58,7 @@
             </div>
             <div class="chat-box">
               <div class="inside">
-                <div class="bubble">
+                <!-- <div class="bubble">
                   <span>[Name user]</span>:
                   <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
                 </div>
@@ -71,7 +69,10 @@
                 <div class="bubble">
                   <span>[Name user]</span>:
                   <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
-                </div>
+                </div> -->
+                <ul class="streamslist">
+                  <!-- STREAMLIST TEMPORARY IN CHATBOX!! -->
+                </ul>
               </div>
               <div class="chat-form">
                 <form class="" action="#" method="post">
@@ -84,11 +85,9 @@
           </div>
         </div>
 
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-          <div class="video">
-            <video autoplay>
-              <source src="dist\images\dummyvideo.mp4" type="video/mp4">
-            </video>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 video-outside">
+          <div class="video" data-player="2">
+            <video id="videoplayer2" autoplay></video>
             <div class="stream-controls">
               <div>
                 <span class="stream-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
@@ -103,7 +102,7 @@
             </div>
             <div class="chat-box">
               <div class="inside">
-                <div class="bubble">
+                <!-- <div class="bubble">
                   <span>[Name user]</span>:
                   <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
                 </div>
@@ -114,7 +113,10 @@
                 <div class="bubble">
                   <span>[Name user]</span>:
                   <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
-                </div>
+                </div> -->
+                <ul class="streamslist">
+
+                </ul>
               </div>
               <div class="chat-form">
                 <form class="" action="#" method="post">
@@ -128,14 +130,12 @@
         </div>
 
       </div>
-      
+
       <div class="row">
 
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-          <div class="video">
-            <video autoplay>
-              <source src="dist\images\dummyvideo.mp4" type="video/mp4">
-            </video>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 video-outside">
+          <div class="video" data-player="3">
+            <video id="videoplayer3" autoplay></video>
             <div class="stream-controls">
               <div>
                 <span class="stream-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
@@ -150,7 +150,7 @@
             </div>
             <div class="chat-box">
               <div class="inside">
-                <div class="bubble">
+                <!-- <div class="bubble">
                   <span>[Name user]</span>:
                   <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
                 </div>
@@ -161,7 +161,10 @@
                 <div class="bubble">
                   <span>[Name user]</span>:
                   <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
-                </div>
+                </div> -->
+                <ul class="streamslist">
+
+                </ul>
               </div>
               <div class="chat-form">
                 <form class="" action="#" method="post">
@@ -174,11 +177,9 @@
           </div>
         </div>
 
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-          <div class="video">
-            <video autoplay>
-              <source src="dist\images\dummyvideo.mp4" type="video/mp4">
-            </video>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 video-outside">
+          <div class="video" data-player="4">
+            <video id="videoplayer4" autoplay></video>
             <div class="stream-controls">
               <div>
                 <span class="stream-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
@@ -193,7 +194,7 @@
             </div>
             <div class="chat-box">
               <div class="inside">
-                <div class="bubble">
+                <!-- <div class="bubble">
                   <span>[Name user]</span>:
                   <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
                 </div>
@@ -204,7 +205,10 @@
                 <div class="bubble">
                   <span>[Name user]</span>:
                   <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
-                </div>
+                </div> -->
+                <ul class="streamslist">
+
+                </ul>
               </div>
               <div class="chat-form">
                 <form class="" action="#" method="post">
@@ -259,4 +263,4 @@
     </div>
   </div> -->
 </div>
-<?php include("footer.php"); ?>
+<?php include "inc/footer.php"; ?>
