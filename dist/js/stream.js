@@ -120,6 +120,6 @@ listSocket.onmessage = function(event){
 //Event handlers
 $(document).on('click', '.streamslist > li', function(e){
 
-    switchStream($(this).data('streamid'), Number($(this).closest('div.videoplayercontainer').data('player')));
+    switchStream($(this).data('streamid'), Number($(this).closest('div.chat').prev().data('player')));
 
 });
