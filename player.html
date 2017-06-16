@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stream Player</title>
+
+    <script src="js/lib/jquery-3.2.1.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script language="JavaScript" type="text/javascript" src="js/lib/jsrsasign-latest-all-min.js"></script>
+    <script src="dist/js/lib/forge.min.js"></script>
+    <script src="js/VideoPlayer.js"></script>
+    <script src="js/stream.js" defer></script>
+
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+</head>
+<body>
+    <h1>Stream Player</h1>
+
+    <div class="videoplayercontainer" data-player="1">
+        <video id="videoplayer1" autoplay></video>
+
+        <p>Select a stream to view:</p>
+        <ul class="streamslist">
+
+        </ul>
+    </div>
+
+    <div class="videoplayercontainer" data-player="2">
+        <video id="videoplayer2" autoplay></video>
+
+        <p>Select a stream to view:</p>
+        <ul class="streamslist">
+
+        </ul>
+    </div>
+
+    <div class="videoplayercontainer" data-player="3">
+        <video id="videoplayer3" autoplay></video>
+
+        <p>Select a stream to view:</p>
+        <ul class="streamslist">
+
+        </ul>
+    </div>
+
+    <div class="videoplayercontainer" data-player="4">
+        <video id="videoplayer4" autoplay></video>
+
+        <p>Select a stream to view:</p>
+        <ul class="streamslist">
+
+        </ul>
+    </div>
+
+    <div id="certconfirmationdialog" style="display: none;">
+        <p>An unknown certificate was received from the server. Are you sure you want to trust this certificate?</p>
+        <p id="pubkeyhash">Hash of the server's public key: </p>
+    </div>
+</body>
+</html>

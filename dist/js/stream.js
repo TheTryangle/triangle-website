@@ -2,19 +2,26 @@
  * @global VideoPlayer
  */
 
+if(localStorage.getItem('trustedCerts') === null)
+{
+    localStorage.setItem('trustedCerts', JSON.stringify([]));
+}
+
+var trustedCertificates = JSON.parse(localStorage.getItem('trustedCerts'));
+
 //Open a websocket for a list of streams
-var listSocket = new WebSocket("ws://localhost:1234/receive");
+var listSocket = new WebSocket('ws://localhost:1234/receive');
 
 function getStreamList()
 {
-    listSocket.send("LIST");
+    listSocket.send('LIST');
 }
 
 var videoPlayers = [];
 
 function switchStream(id, playerNumber)
 {
-    if(typeof videoPlayers[playerNumber] === "undefined")
+  if(typeof videoPlayers[playerNumber] === "undefined")
     {
         videoPlayers[playerNumber] = new VideoPlayer(document.getElementById('videoplayer' + playerNumber));
         videoPlayers[playerNumber].openWebSocket(id);
@@ -30,6 +37,45 @@ function switchStream(id, playerNumber)
       $(this).dequeue();
     });
 
+}
+
+function askTrustPublicKey(pubKey, videoPlayer)
+{
+    $('#certconfirmationdialog').dialog({
+        resizable: false,
+        height: 'auto',
+        width: 400,
+        modal: true,
+        open: function(){
+
+            let hashText = document.getElementById('pubkeyhash');
+
+            //Hash public key and show it to client.
+            let md = forge.md.sha1.create();
+            md.update('pubKey');
+            hashText.appendChild(document.createTextNode(md.digest().toHex()));
+
+        },
+        buttons: {
+            'Confirm and trust certificate'(){
+                trustedCertificates.push(pubKey);
+                localStorage.setItem('trustedCerts', JSON.stringify(trustedCertificates));
+
+                videoPlayer.trustPublicKey(pubKey);
+
+                $(this).dialog('close');
+            },
+
+            'Confirm once'(){
+                videoPlayer.trustPublicKey(pubKey);
+                $(this).dialog('close');
+            },
+
+            'Cancel'(){
+                $(this).dialog('close');
+            }
+        }
+    });
 }
 
 videoPlayers[1] = new VideoPlayer(document.getElementById('videoplayer1'));
@@ -96,4 +142,5 @@ $(document).on('click', '.select-stream', function(e){
       switchStream($(this).data('streamid'), Number($(this).closest(".video-outside").find('div.video').data('player')));
     });
 
+    switchStream($(this).data('streamid'), Number($(this).closest('div.chat').prev().data('player')));
 });
