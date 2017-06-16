@@ -47,6 +47,12 @@ class VideoPlayer{
             //If data is a blob, it's probably a video fragment.
             if(event.data instanceof Blob)
             {
+                //If the connection has not been verified yet, we do not want to accept any binary data.
+                if(!_this.trustedConnection)
+                {
+                    return;
+                }
+
                 _this.lastVideo = event.data;
 
                 _this.videoQueue.push(URL.createObjectURL(event.data));
@@ -103,6 +109,8 @@ class VideoPlayer{
     }
 
     _challengeServer(pubKey){
+        this.pubKey = pubKey;
+
         let rsa = forge.pki.rsa;
 
         this.challenge = btoa(forge.random.getBytesSync(32));
@@ -118,12 +126,28 @@ class VideoPlayer{
     _verifyChallenge(msg){
         if(msg === this.challenge)
         {
-            this.trustedConnection = true;
-            console.log('Verification successful!');
+            console.log('Challenge successful!');
+
+            //Check if the public key is already trusted by the browser. If not, ask to trust.
+            if(trustedCertificates.indexOf(this.pubKey) > -1)
+            {
+                this.trustedConnection = true;
+            }
+            else
+            {
+                askTrustPublicKey(this.pubKey, this);
+            }
         }
         else
         {
             console.log('Verification failed! The server might be an impostor.');
+        }
+    }
+
+    trustPublicKey(pubKey){
+        if(pubKey === this.pubKey)
+        {
+            this.trustedConnection = true;
         }
     }
 
