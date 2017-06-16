@@ -1,4 +1,4 @@
-<?php include("header.php"); ?>
+<?php include "inc/header.php"; ?>
 <div class="row stream-overview">
   <div class="container-fluid bar">
     <span class="sidebar-title">
@@ -90,4 +90,4 @@
     <div class="clearfix"></div>
   </div>
 </div>
-<?php include("footer.php"); ?>
+<?php include "inc/footer.php"; ?>

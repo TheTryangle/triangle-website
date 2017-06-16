@@ -20,7 +20,6 @@ $(document).ready(function(){
   $(this).keyup(function(e) {
       // If Escape is pressed.
        if (e.keyCode == 27) {
-         console.log("text");
          $(document).find(".isFullscreen").removeClass("isFullscreen");
          return false;
       }

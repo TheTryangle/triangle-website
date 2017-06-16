@@ -17,14 +17,6 @@
         <div class="navbar-header">
           <a href="#" class="navbar-brand">Try-Angle</a>
         </div>
-        <ul class="nav navbar-nav">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Stream</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">Profile</a></li>
-          <li><a href="#">Logout</a></li>
-        </ul>
 
       </div>
     </div>
