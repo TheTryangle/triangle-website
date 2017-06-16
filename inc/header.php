@@ -6,8 +6,20 @@
 
     <title>Try-Angle</title>
 
-    <link rel="stylesheet" href="https://bootswatch.com/darkly/bootstrap.min.css">
-    <link rel="stylesheet" href="dist/css/style.css">
+      <link rel="stylesheet" href="https://bootswatch.com/darkly/bootstrap.min.css">
+      <link rel="stylesheet" href="dist/css/style.css">
+
+      <!-- Libraries  -->
+      <script type="text/javascript" src="dist/js/lib/jquery-3.2.1.min.js"></script>
+      <script type="text/javascript" src="dist/js/lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="dist/js/lib/forge.min.js"></script>
+      <script type="text/javascript" src="dist/js/lib/jsrsasign-latest-all-min.js"></script>
+      <script type="text/javascript" src="dist/js/lib/jquery.fullscreen.js"></script>
+
+      <!-- Own JS -->
+      <script type="text/javascript" src="dist/js/VideoPlayer.js"></script>
+      <script type="text/javascript" src="dist/js/stream.js" defer></script>
+      <script type="text/javascript" src="dist/js/script.js"></script>
   </head>
   <body>
 
