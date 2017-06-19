@@ -149,4 +149,10 @@
   </div>
 
 </div>
+
+<div id="certconfirmationdialog" class="dialog" style="display: none;">
+    <p>An unknown certificate was received from the server. Are you sure you want to trust this certificate?</p>
+    <p id="pubkeyhash">Hash of the server's public key: </p>
+</div>
+
 <?php include "inc/footer.php"; ?>
