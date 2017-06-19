@@ -82,7 +82,11 @@ class VideoPlayer{
 
         //Log errors
         this.webSocket.onerror = function(error) {
-            console.log('WebSocket Error ' + error);
+          console.error('WebSocket Error:');
+          console.error(error);
+
+          $('ul.streamslist').empty();
+          $('ul.streamslist').append('<span>Sorry, the server is offline.</span>');
         };
 
         //Try to reconnect in 5 seconds
