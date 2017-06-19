@@ -9,8 +9,8 @@ listSocket.onerror = function(error) {
   console.error('WebSocket Error:');
   console.error(error);
 
-  $("ul.streamslist").empty();
-  $("ul.streamslist").append("<span>Sorry, the server is offline.</span>");
+  $('ul.streamslist').empty();
+  $('ul.streamslist').append('<span>Sorry, the server is offline.</span>');
 };
 
 function getStreamList()
@@ -89,7 +89,7 @@ listSocket.onmessage = function(event){
       }
 
     } else {
-      $("ul.streamslist").append("<span>Sorry, no streams online.</span>");
+      $('ul.streamslist').append('<span>Sorry, no streams online.</span>');
     }
 
 };
