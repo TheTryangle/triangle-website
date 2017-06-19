@@ -20,15 +20,17 @@ class VideoPlayer{
         //Workaround for "this" falling out of scope in closures.
         var _this = this;
 
-        //Play next fragment when the video ends.
-        this.videoPlayer.addEventListener('ended', function() {
+        this.endedListener = function(){
             _this.playing = false;
             _this._playVideo();
-        }, false);
+        };
+
+        //Play next fragment when the video ends.
+        this.videoPlayer.addEventListener('ended', this.endedListener, false);
     }
 
     openWebSocket(idToWatch){
-        this.webSocket = new WebSocket('ws://localhost:1234/receive');
+        this.webSocket = new WebSocket('ws://localhost:5000/receive');
 
         var _this = this;
 
@@ -93,6 +95,12 @@ class VideoPlayer{
 
     watch(id){
         this.webSocket.send('WATCH ' + id);
+    }
+
+    close(){
+        this.webSocket.close();
+        this.videoQueue = [];
+        this.videoPlayer.removeEventListener('ended', this.endedListener, false);
     }
 
     getVideoElement(){

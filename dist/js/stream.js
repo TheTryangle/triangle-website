@@ -10,7 +10,7 @@ if(localStorage.getItem('trustedCerts') === null)
 var trustedCertificates = JSON.parse(localStorage.getItem('trustedCerts'));
 
 //Open a websocket for a list of streams
-var listSocket = new WebSocket('ws://localhost:1234/receive');
+var listSocket = new WebSocket('ws://localhost:5000/receive');
 
 function getStreamList()
 {
@@ -38,6 +38,13 @@ function switchStream(id, playerNumber)
     });
 
 }
+
+function closeVideoPlayer(videoPlayerNumber)
+{
+    videoPlayers[videoPlayerNumber].close();
+    videoPlayers[videoPlayerNumber] = undefined;
+}
+
 
 function askTrustPublicKey(pubKey, videoPlayer)
 {
@@ -138,9 +145,9 @@ $(document).on('click', '.select-stream', function(e){
     $(this).hide();
     $(this).parent().find('ul').show();
 
-    $(document).on("click", ".streamslist > li", function() {
-      switchStream($(this).data('streamid'), Number($(this).closest(".video-outside").find('div.video').data('player')));
-    });
+    //switchStream($(this).data('streamid'), Number($(this).closest('div.chat').prev().data('player')));
+});
 
-    switchStream($(this).data('streamid'), Number($(this).closest('div.chat').prev().data('player')));
+$(document).on("click", ".streamslist > li", function() {
+    switchStream($(this).data('streamid'), Number($(this).closest(".video-outside").find('div.video').data('player')));
 });
