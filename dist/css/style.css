@@ -57,6 +57,7 @@ video::-webkit-media-controls {display:none!important;}
 .stream-item .thumb > span {display:block;padding: 10px 0 0 10px;font-size: 25px;line-height: 25px;font-weight: bold;}
 .stream-item a > span {display:block; margin-top:5px;}
 .stream-items, .video-container {overflow-y:auto;overflow-x:hidden;height: 100%;}
+.video-container > div > div {border:1px solid #00bc8c;}
 
 /* Login page */
 .panel, .panel-login, .panel-heading {border-radius:0!important;}
@@ -67,3 +68,9 @@ video::-webkit-media-controls {display:none!important;}
 .panel-heading hr {margin-top: 10px; margin-bottom: 0px; clear: both; border: 0; height: 1px; background-image: -webkit-linear-gradient(left,rgba(255,255,255,0),rgba(255,255,255,0.15),rgba(255,255,255,0)); background-image: -moz-linear-gradient(left,rgba(255,255,255,0),rgba(255,255,255,0.15),rgba(255,255,255,0)); background-image: -ms-linear-gradient(left,rgba(255,255,255,0),rgba(255,255,255,0.15),rgba(255,255,255,0)); background-image: -o-linear-gradient(left,rgba(255,255,255,0),rgba(255,255,255,0.15),rgba(255,255,255,0)); }
 .btn-login, .btn-register {background-color:#0DD4A1; text-transform:uppercase; transition:.3s; color:#FFF;}
 .btn-login:hover, .btn-register:hover {color:#464545;}
+
+/* Dialogs */
+.ui-dialog {background-color: #00bc8c;padding: 15px;border: 2px solid #141414;outline:none;max-width: 100%;}
+.ui-dialog button {background-color: #141414;transition:.3s;border: none;outline: none;padding: 5px;margin-right: 15px;}
+.ui-dialog button:hover {background-color: #464545;}
+.ui-dialog-titlebar, .ui-dialog-buttonset button:last-of-type {display:none;}
