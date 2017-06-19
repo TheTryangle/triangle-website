@@ -12,6 +12,14 @@ var trustedCertificates = JSON.parse(localStorage.getItem('trustedCerts'));
 //Open a websocket for a list of streams
 var listSocket = new WebSocket('ws://localhost:5000/receive');
 
+listSocket.onerror = function(error) {
+  console.error('WebSocket Error:');
+  console.error(error);
+
+  $('ul.streamslist').empty();
+  $('ul.streamslist').append('<span>Sorry, the server is offline.</span>');
+};
+
 function getStreamList()
 {
     listSocket.send('LIST');
@@ -134,7 +142,7 @@ listSocket.onmessage = function(event){
       }
 
     } else {
-      $("ul.streamslist").append("<li>No streams online</li>")
+      $('ul.streamslist').append('<span>Sorry, no streams online.</span>');
     }
 
 };
@@ -145,9 +153,10 @@ $(document).on('click', '.select-stream', function(e){
     $(this).hide();
     $(this).parent().find('ul').show();
 
-    //switchStream($(this).data('streamid'), Number($(this).closest('div.chat').prev().data('player')));
 });
 
 $(document).on("click", ".streamslist > li", function() {
-    switchStream($(this).data('streamid'), Number($(this).closest(".video-outside").find('div.video').data('player')));
+
+  switchStream($(this).data('streamid'), Number($(this).closest(".video-outside").find('div.video').data('player')));
+
 });
