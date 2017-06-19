@@ -1,4 +1,4 @@
-<?php include("header.php"); ?>
+<?php include "inc/header.php"; ?>
 <div class="col-md-6 col-md-offset-3 login-container">
   <div class="panel panel-login">
     <div class="panel-heading">
@@ -60,4 +60,4 @@
      </div>
    </div>
 </div>
-<?php include("footer.php"); ?>
+<?php include "inc/footer.php"; ?>

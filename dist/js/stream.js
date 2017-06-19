@@ -21,7 +21,7 @@ var videoPlayers = [];
 
 function switchStream(id, playerNumber)
 {
-    if(typeof videoPlayers[playerNumber] === 'undefined')
+  if(typeof videoPlayers[playerNumber] === "undefined")
     {
         videoPlayers[playerNumber] = new VideoPlayer(document.getElementById('videoplayer' + playerNumber));
         videoPlayers[playerNumber].openWebSocket(id);
@@ -30,6 +30,13 @@ function switchStream(id, playerNumber)
     {
         videoPlayers[playerNumber].watch(id);
     }
+
+    // Show video and hide streamerslist.
+    $('#videoplayer' + playerNumber).parent().parent().css("display", "block").queue(function() {
+      $(this).parent().find("ul").hide();
+      $(this).dequeue();
+    });
+
 }
 
 function askTrustPublicKey(pubKey, videoPlayer)
@@ -96,30 +103,44 @@ listSocket.onmessage = function(event){
 
     $(streamsList).html('');
 
-    for(let stream of streams)
-    {
-        //Create li element to insert.
-        let li = document.createElement('li');
-        li.class = 'stream';
-        li.dataset.streamid = stream.ClientID;
+    // If there are streams online.
+    if (typeof streams !== 'undefined' && streams.length > 0) {
 
-        //Create anchor element for li.
-        //createTextNode() is used to safely insert the stream ID without any XSS.
-        let anchor = document.createElement('a');
-        anchor.href = '#';
-        anchor.appendChild(document.createTextNode(stream.ClientID));
-        li.appendChild(anchor);
+      for(let stream of streams)
+      {
+          //Create li element to insert.
+          let li = document.createElement('li');
+          li.class = 'stream';
+          li.dataset.streamid = stream.ClientID;
 
-        for(let streamlist of streamsList)
-        {
-            streamlist.appendChild(li.cloneNode(true));
-        }
+          //Create anchor element for li.
+          //createTextNode() is used to safely insert the stream ID without any XSS.
+          let anchor = document.createElement('a');
+          anchor.href = '#';
+          anchor.appendChild(document.createTextNode(stream.ClientID));
+          li.appendChild(anchor);
+
+          for(let streamlist of streamsList)
+          {
+              streamlist.appendChild(li.cloneNode(true));
+          }
+      }
+
+    } else {
+      $("ul.streamslist").append("<li>No streams online</li>")
     }
+
 };
 
 //Event handlers
-$(document).on('click', '.streamslist > li', function(e){
+$(document).on('click', '.select-stream', function(e){
+
+    $(this).hide();
+    $(this).parent().find('ul').show();
+
+    $(document).on("click", ".streamslist > li", function() {
+      switchStream($(this).data('streamid'), Number($(this).closest(".video-outside").find('div.video').data('player')));
+    });
 
     switchStream($(this).data('streamid'), Number($(this).closest('div.chat').prev().data('player')));
-
 });
