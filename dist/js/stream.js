@@ -29,7 +29,7 @@ var videoPlayers = [];
 
 function switchStream(id, playerNumber)
 {
-  if(typeof videoPlayers[playerNumber] === "undefined")
+  if(typeof videoPlayers[playerNumber] === 'undefined' || videoPlayers[playerNumber] === null)
     {
         videoPlayers[playerNumber] = new VideoPlayer(document.getElementById('videoplayer' + playerNumber));
         videoPlayers[playerNumber].openWebSocket(id);
@@ -50,7 +50,7 @@ function switchStream(id, playerNumber)
 function closeVideoPlayer(videoPlayerNumber)
 {
     videoPlayers[videoPlayerNumber].close();
-    videoPlayers[videoPlayerNumber] = undefined;
+    videoPlayers[videoPlayerNumber] = null;
 }
 
 

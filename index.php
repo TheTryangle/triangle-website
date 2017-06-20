@@ -20,7 +20,7 @@
             <div class="chat">
               <div class="chat-head">
                 <span>[Name streamer]</span>
-                <button type="button" class="exit-stream"></button>
+                <button type="button" class="exit-stream" data-player="1"></button>
               </div>
               <div class="chat-box">
                 <div class="inside"></div>
@@ -55,7 +55,7 @@
             <div class="chat">
               <div class="chat-head">
                 <span>[Name streamer]</span>
-                <button type="button" class="exit-stream"></button>
+                <button type="button" class="exit-stream" data-player="2"></button>
               </div>
               <div class="chat-box">
                 <div class="inside"></div>
@@ -93,7 +93,7 @@
             <div class="chat">
               <div class="chat-head">
                 <span>[Name streamer]</span>
-                <button type="button" class="exit-stream"></button>
+                <button type="button" class="exit-stream" data-player="3"></button>
               </div>
               <div class="chat-box">
                 <div class="inside"></div>
@@ -128,7 +128,7 @@
             <div class="chat">
               <div class="chat-head">
                 <span>[Name streamer]</span>
-                <button type="button" class="exit-stream"></button>
+                <button type="button" class="exit-stream" data-player="4"></button>
               </div>
               <div class="chat-box">
                 <div class="inside"></div>
@@ -157,6 +157,10 @@
 <div id="certconfirmationdialog" class="dialog" style="display: none;">
     <p>An unknown certificate was received from the server. Are you sure you want to trust this certificate?</p>
     <p id="pubkeyhash">Hash of the server's public key: </p>
+</div>
+
+<div id="signaturewarningdialog" class="dialog" style="display: none;">
+    <p>Possible tampering detected! The video player has been closed for your security. Please try again.</p>
 </div>
 
 <?php include "inc/footer.php"; ?>
