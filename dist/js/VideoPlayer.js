@@ -29,8 +29,8 @@ class VideoPlayer{
         this.videoPlayer.addEventListener('ended', this.endedListener, false);
     }
 
-    openWebSocket(idToWatch){
-        this.webSocket = new WebSocket('ws://188.226.164.87/server/receive');
+    openWebSocket(idToWatch, ipaddress){
+        this.webSocket = new WebSocket(ipaddress);
 
         var _this = this;
 
