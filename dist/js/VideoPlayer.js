@@ -20,11 +20,13 @@ class VideoPlayer{
         //Workaround for "this" falling out of scope in closures.
         var _this = this;
 
-        //Play next fragment when the video ends.
-        this.videoPlayer.addEventListener('ended', function() {
+        this.endedListener = function(){
             _this.playing = false;
             _this._playVideo();
-        }, false);
+        };
+
+        //Play next fragment when the video ends.
+        this.videoPlayer.addEventListener('ended', this.endedListener, false);
     }
 
     openWebSocket(idToWatch){
@@ -97,6 +99,13 @@ class VideoPlayer{
 
     watch(id){
         this.webSocket.send('WATCH ' + id);
+    }
+
+    close(){
+        this.webSocket.close();
+        this.videoQueue = [];
+        this.videoPlayer.removeEventListener('ended', this.endedListener, false);
+        this.videoPlayer.src = '';
     }
 
     getVideoElement(){
@@ -181,10 +190,19 @@ class VideoPlayer{
             {
                 console.log('Signature verification failed!');
 
-                let alertBox = document.createElement('div');
-                alertBox.class = 'alert';
-                alertBox.innerHTML = '<p>Possible tampering detected! Please reload the page to try again.</p>';
-                document.body.appendChild(alertBox);
+                $('button.exit-stream[data-player="1"]').trigger('click');
+
+                $('#signaturewarningdialog').dialog({
+                    resizable: false,
+                    height: 'auto',
+                    width: 400,
+                    modal: true,
+                    buttons: {
+                        'OK'(){
+                            $(this).dialog('close');
+                        }
+                    }
+                });
             }
         };
     }

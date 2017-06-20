@@ -29,7 +29,7 @@ var videoPlayers = [];
 
 function switchStream(id, playerNumber)
 {
-  if(typeof videoPlayers[playerNumber] === "undefined")
+  if(typeof videoPlayers[playerNumber] === 'undefined' || videoPlayers[playerNumber] === null)
     {
         videoPlayers[playerNumber] = new VideoPlayer(document.getElementById('videoplayer' + playerNumber));
         videoPlayers[playerNumber].openWebSocket(id);
@@ -46,6 +46,13 @@ function switchStream(id, playerNumber)
     });
 
 }
+
+function closeVideoPlayer(videoPlayerNumber)
+{
+    videoPlayers[videoPlayerNumber].close();
+    videoPlayers[videoPlayerNumber] = null;
+}
+
 
 function askTrustPublicKey(pubKey, videoPlayer)
 {
@@ -152,5 +159,15 @@ $(document).on("click", ".streamslist > li", function() {
 
   switchStream($(this).data('streamid'), Number($(this).closest(".video-outside").find('div.video').data('player')));
 
-    switchStream($(this).data('streamid'), Number($(this).closest('div.chat').prev().data('player')));
+});
+
+$(document).on('click', '.exit-stream', function() {
+
+  var player = $(this).parent().parent().siblings();
+
+  closeVideoPlayer(player.data('player'));
+
+  player.parent().css('display', 'none');
+  player.parent().siblings('button').show();
+
 });
