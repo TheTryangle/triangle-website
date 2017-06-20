@@ -167,7 +167,7 @@ $(document).on('click', '.exit-stream', function() {
 
   closeVideoPlayer(player.data('player'));
 
-  player.parent().hide();
+  player.parent().css('display', 'none');
   player.parent().siblings('button').show();
 
 });
