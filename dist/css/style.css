@@ -18,7 +18,7 @@ body {padding-top:60px; overflow:hidden;}
 
 .stream .bar {background-color:#282828;}
 .video-container > div > div {height: calc(50vh - 30px);}
-.video-outside > div {height:100%;}
+.video-outside > div, .video-outside > div > div {height:100%;}
 .video {position:relative;width: calc(100% - 290px);height:100%;float: left;}
 .video > div:first-of-type {height:100%;}
 .select-stream {position:absolute;transition:0.3s;margin:auto;top:0;right:0;bottom:0;left:0;height: 10vh;width: 10vh;background-color: #00bc8c;border: none;border-radius: 100%;font-weight: bold;font-size: 60px;line-height: 49px;outline: none;}
@@ -60,7 +60,10 @@ video::-webkit-media-controls {display:none!important;}
 .stream-item .thumb > span {display:block;padding: 10px 0 0 10px;font-size: 25px;line-height: 25px;font-weight: bold;}
 .stream-item a > span {display:block; margin-top:5px;}
 .stream-items, .video-container {overflow-y:auto;overflow-x:hidden;height: 100%;}
-.video-container > div > div {border:1px solid #00bc8c;}
+.video-container > div:first-of-type > div:first-of-type {border-right:1px solid #008966; border-bottom:1px solid #008966;}
+.video-container > div:first-of-type > div:last-of-type {border-left:1px solid #008966; border-bottom:1px solid #008966;}
+.video-container > div:last-of-type > div:first-of-type {border-right:1px solid #008966; border-top:1px solid #008966;}
+.video-container > div:last-of-type > div:last-of-type {border-left:1px solid #008966; border-top:1px solid #008966;}
 
 /* Login page */
 .panel, .panel-login, .panel-heading {border-radius:0!important;}
@@ -74,6 +77,6 @@ video::-webkit-media-controls {display:none!important;}
 
 /* Dialogs */
 .ui-dialog {background-color: #00bc8c;padding: 15px;border: 2px solid #141414;outline:none;max-width: 100%;}
-.ui-dialog button {background-color: #141414;transition:.3s;border: none;outline: none;padding: 5px;margin-right: 15px;}
+.ui-dialog button {background-color: #141414;transition:.3s;border: none;outline: none;padding: 5px;margin-right: 5px;}
 .ui-dialog button:hover {background-color: #464545;}
-.ui-dialog-titlebar, .ui-dialog[aria-describedby="certconfirmationdialog"] .ui-dialog-buttonset button:last-of-type {display:none;}
+.ui-dialog-titlebar {display:none;}
