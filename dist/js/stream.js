@@ -9,7 +9,7 @@ if(localStorage.getItem('trustedCerts') === null)
 
 var trustedCertificates = JSON.parse(localStorage.getItem('trustedCerts'));
 
-var ipAddress = 'ws://145.49.26.75:5000/receive';
+var ipAddress = 'ws://localhost:5000/receive';
 
 //Open a websocket for a list of streams
 var listSocket = new WebSocket(ipAddress);
@@ -134,7 +134,22 @@ listSocket.onmessage = function(event){
           //createTextNode() is used to safely insert the stream ID without any XSS.
           let anchor = document.createElement('a');
           anchor.href = '#';
-          anchor.appendChild(document.createTextNode(stream.ClientID));
+
+          let streamName;
+          if(stream.Title)
+          {
+              streamName = stream.Title;
+          }
+          else if(stream.StreamerName)
+          {
+              streamName = stream.StreamerName;
+          }
+          else
+          {
+              streamName = stream.ClientID;
+          }
+
+          anchor.appendChild(document.createTextNode(streamName));
           li.appendChild(anchor);
 
           for(let streamlist of streamsList)
