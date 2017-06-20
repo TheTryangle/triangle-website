@@ -9,10 +9,10 @@ if(localStorage.getItem('trustedCerts') === null)
 
 var trustedCertificates = JSON.parse(localStorage.getItem('trustedCerts'));
 
-var ipaddress = 'ws://188.226.164.87/server/receive';
+var ipAddress = 'ws://145.49.26.75:5000/receive';
 
 //Open a websocket for a list of streams
-var listSocket = new WebSocket(ipaddress);
+var listSocket = new WebSocket(ipAddress);
 
 listSocket.onerror = function(error) {
   console.error('WebSocket Error:');
@@ -34,7 +34,7 @@ function switchStream(id, playerNumber)
   if(typeof videoPlayers[playerNumber] === 'undefined' || videoPlayers[playerNumber] === null)
     {
         videoPlayers[playerNumber] = new VideoPlayer(document.getElementById('videoplayer' + playerNumber));
-        videoPlayers[playerNumber].openWebSocket(id, ipaddress);
+        videoPlayers[playerNumber].openWebSocket(ipAddress, id);
     }
     else
     {
@@ -96,7 +96,7 @@ function askTrustPublicKey(pubKey, videoPlayer)
 }
 
 videoPlayers[1] = new VideoPlayer(document.getElementById('videoplayer1'));
-videoPlayers[1].openWebSocket(undefined, ipaddress);
+videoPlayers[1].openWebSocket(ipAddress);
 
 var streamsList = document.getElementsByClassName('streamslist');
 

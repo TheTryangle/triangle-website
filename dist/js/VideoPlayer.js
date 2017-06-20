@@ -29,8 +29,8 @@ class VideoPlayer{
         this.videoPlayer.addEventListener('ended', this.endedListener, false);
     }
 
-    openWebSocket(idToWatch, ipaddress){
-        this.webSocket = new WebSocket(ipaddress);
+    openWebSocket(ipAddress, idToWatch){
+        this.webSocket = new WebSocket(ipAddress);
 
         var _this = this;
 
@@ -90,11 +90,7 @@ class VideoPlayer{
           $('ul.streamslist').empty();
           $('ul.streamslist').append('<span>Sorry, the server is offline.</span>');
         };
-
-        //Try to reconnect in 5 seconds
-        this.webSocket.onclose = function(){
-            setTimeout(function(){_this.openWebSocket()}, 5000);
-        };
+        
     }
 
     watch(id){
