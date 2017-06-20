@@ -1,0 +1,76 @@
+body {padding-top:60px; overflow:hidden;}
+.bar {height:60px;width:100%;display: table;}
+.sidebar-title {display:table-cell; vertical-align: middle;}
+.sidebar-title * {display:inline;}
+.navbar a {transition:.3s;}
+
+/* Stream page*/
+.sidebar, .stream {height:calc(100vh - 60px); position: relative;} /* .chat */
+.sidebar {background-color:#1E1E1E;} /* .chat */
+.sidebar {overflow-y:auto;}
+.stream {background-color:#141414;}
+
+.stream-link {margin-bottom:25px;}
+.stream-link, .stream-link:hover, .stream-link:active, .stream-link:focus {display:block; text-decoration:none; color:inherit;}
+.stream-link .thumb {max-width:100%; width:198px; height:111px; background-color:#0DD4A1; position:relative;}
+.stream-link-title {font-size:12px; display:block;}
+.stream-link-name {color:#FFFFFF; position:absolute; left:0; top:0; margin-top:5px; margin-left:5px;}
+
+.stream .bar {background-color:#282828;}
+.video-container > div > div {height: calc(50vh - 30px);}
+.video-outside > div {height:100%;}
+.video {position:relative;width: calc(100% - 290px);height:100%;float: left;}
+.video > div:first-of-type {height:100%;}
+.select-stream {position:absolute;transition:0.3s;margin:auto;top:0;right:0;bottom:0;left:0;height: 10vh;width: 10vh;background-color: #00bc8c;border: none;border-radius: 100%;font-weight: bold;font-size: 60px;line-height: 49px;outline: none;}
+.select-stream:hover {background-color: #00a379;}
+.stream video {display:block;width: 100%;max-height: 100%;}
+.stream video * {transition:.3s;}
+.stream-controls {position:absolute;top: 0;left: 0;height: 100%;width: 100%; display:none;}
+.stream-controls * {color:#000;}
+.mute {position:absolute; left:0; bottom:0;}
+.fullscreen {position:absolute; right:0; bottom:0;}
+.stream-controls > div {position: absolute;background-color:rgba(0,0,0,0.5);padding:5px;width: 100%;}
+.stream-controls > div > span {display:block; color:#FFF;}
+video::-webkit-media-controls {display:none!important;}
+.isFullscreen .stream-controls {display:block!important; z-index:9999999999;}
+.streamslist {display:block;padding:0;margin:0;text-decoration:none;list-style-type:none;height: 100%;overflow-y: auto;}
+.streamslist a {display:block; transition:0.3s; background-color: #00bc8c; color: #fff; font-size: 15px; text-decoration: none; padding: 10px; border-top: 5px solid #008966}
+.streamslist a:hover {background-color:#008966}
+
+.chat {width:290px;display: inline-block;height: 100%;}
+.chat-head {background-color:#323232;z-index:9;height:30px;display:table;width:100%;padding-left:10px;position: relative;-webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2); -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2); box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);}
+.chat-head > span {display:table-cell; vertical-align:middle;}
+.chat-box {height: calc(100% - 70px);width:100%;background-color: #282828;}
+.chat-box .inside {height:100%; padding:0 10px 10px 10px; overflow-y:scroll; overflow-x:hidden;}
+.chat-box input[type="text"] {height: 30px;width: calc(100% - 50px);float: left;line-height: 30px;padding-left: 10px;}
+.chat-box input[type="button"] {height: 30px; width: 45px; padding: 0; float: right;}
+.chat-form {background-color: #00bc8c;padding: 5px;}
+.bubble {width:100%;}
+.bubble * {font-size: 13px;line-height: 13px;}
+.bubble > span:first-of-type {color: #0ce3ac;}
+
+/* Overview page */
+.stream-overview .bar {background-color:#323232;}
+.stream-item a {display:block;text-decoration:none;color:inherit;margin-top: 50px;padding: 15px; background-color:#323232; transition:.3s;}
+.stream-item a:hover {background-color:#141414;}
+.stream-item .thumb {max-width:100%;width:334px;height:188px;background-color:#0DD4A1;position: relative;}
+.stream-item .thumb > span {display:block;padding: 10px 0 0 10px;font-size: 25px;line-height: 25px;font-weight: bold;}
+.stream-item a > span {display:block; margin-top:5px;}
+.stream-items, .video-container {overflow-y:auto;overflow-x:hidden;height: 100%;}
+.video-container > div > div {border:1px solid #00bc8c;}
+
+/* Login page */
+.panel, .panel-login, .panel-heading {border-radius:0!important;}
+.panel-login {-webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2); -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2); box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);}
+.panel-heading {text-align:center;}
+.panel-heading a {text-decoration: none; color: #FFF; font-weight: bold; font-size: 15px; -webkit-transition: all 0.1s linear; -moz-transition: all 0.1s linear; transition: all 0.1s linear;}
+.panel-heading a.active {color: #0DD4A1; font-size: 18px;}
+.panel-heading hr {margin-top: 10px; margin-bottom: 0px; clear: both; border: 0; height: 1px; background-image: -webkit-linear-gradient(left,rgba(255,255,255,0),rgba(255,255,255,0.15),rgba(255,255,255,0)); background-image: -moz-linear-gradient(left,rgba(255,255,255,0),rgba(255,255,255,0.15),rgba(255,255,255,0)); background-image: -ms-linear-gradient(left,rgba(255,255,255,0),rgba(255,255,255,0.15),rgba(255,255,255,0)); background-image: -o-linear-gradient(left,rgba(255,255,255,0),rgba(255,255,255,0.15),rgba(255,255,255,0)); }
+.btn-login, .btn-register {background-color:#0DD4A1; text-transform:uppercase; transition:.3s; color:#FFF;}
+.btn-login:hover, .btn-register:hover {color:#464545;}
+
+/* Dialogs */
+.ui-dialog {background-color: #00bc8c;padding: 15px;border: 2px solid #141414;outline:none;max-width: 100%;}
+.ui-dialog button {background-color: #141414;transition:.3s;border: none;outline: none;padding: 5px;margin-right: 15px;}
+.ui-dialog button:hover {background-color: #464545;}
+.ui-dialog-titlebar, .ui-dialog-buttonset button:last-of-type {display:none;}
