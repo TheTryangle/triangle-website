@@ -10,7 +10,7 @@ if(localStorage.getItem('trustedCerts') === null)
 var trustedCertificates = JSON.parse(localStorage.getItem('trustedCerts'));
 
 //Open a websocket for a list of streams
-var listSocket = new WebSocket('ws://localhost:5000/receive');
+var listSocket = new WebSocket('ws://188.226.164.87/server/receive');
 
 listSocket.onerror = function(error) {
   console.error('WebSocket Error:');

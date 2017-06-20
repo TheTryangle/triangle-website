@@ -30,7 +30,7 @@ class VideoPlayer{
     }
 
     openWebSocket(idToWatch){
-        this.webSocket = new WebSocket('ws://localhost:5000/receive');
+        this.webSocket = new WebSocket('ws://188.226.164.87/server/receive');
 
         var _this = this;
 
