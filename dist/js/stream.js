@@ -160,3 +160,14 @@ $(document).on("click", ".streamslist > li", function() {
   switchStream($(this).data('streamid'), Number($(this).closest(".video-outside").find('div.video').data('player')));
 
 });
+
+$(document).on('click', '.exit-stream', function() {
+
+  var player = $(this).parent().parent().siblings();
+
+  closeVideoPlayer(player.data('player'));
+
+  player.parent().hide();
+  player.parent().siblings('button').show();
+
+});

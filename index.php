@@ -6,7 +6,7 @@
       <div class="row">
 
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 video-outside">
-          <div style="display:none;">
+          <div class="row" style="display:none;">
             <div class="video" data-player="1">
               <video id="videoplayer1" autoplay></video>
               <div class="stream-controls">
@@ -20,6 +20,7 @@
             <div class="chat">
               <div class="chat-head">
                 <span>[Name streamer]</span>
+                <button type="button" class="exit-stream"></button>
               </div>
               <div class="chat-box">
                 <div class="inside"></div>
@@ -40,7 +41,7 @@
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 video-outside">
-          <div style="display:none;">
+          <div class="row" style="display:none;">
             <div class="video" data-player="2">
               <video id="videoplayer2" autoplay></video>
               <div class="stream-controls">
@@ -54,6 +55,7 @@
             <div class="chat">
               <div class="chat-head">
                 <span>[Name streamer]</span>
+                <button type="button" class="exit-stream"></button>
               </div>
               <div class="chat-box">
                 <div class="inside"></div>
@@ -77,7 +79,7 @@
       <div class="row">
 
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 video-outside">
-          <div style="display:none;">
+          <div class="row" style="display:none;">
             <div class="video" data-player="3">
               <video id="videoplayer3" autoplay></video>
               <div class="stream-controls">
@@ -91,6 +93,7 @@
             <div class="chat">
               <div class="chat-head">
                 <span>[Name streamer]</span>
+                <button type="button" class="exit-stream"></button>
               </div>
               <div class="chat-box">
                 <div class="inside"></div>
@@ -111,7 +114,7 @@
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 video-outside">
-          <div style="display:none;">
+          <div class="row" style="display:none;">
             <div class="video" data-player="4">
               <video id="videoplayer4" autoplay></video>
               <div class="stream-controls">
@@ -125,6 +128,7 @@
             <div class="chat">
               <div class="chat-head">
                 <span>[Name streamer]</span>
+                <button type="button" class="exit-stream"></button>
               </div>
               <div class="chat-box">
                 <div class="inside"></div>
