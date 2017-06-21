@@ -130,5 +130,8 @@ function addMessage(msgObj) {
     var user = msgObj.Name;
 
     //$( text).appendTo( msg.StreamId );
-    $('<div>' + user + ': ' + text + '</div>').appendTo('.inside[streamid=\'' + msgObj.StreamId + '\']');
+    var $messageElem = $('<div></div>');
+    $messageElem.text(user + ': ' + text);
+    
+    $messageElem.appendTo('.inside[streamid=\'' + msgObj.StreamId + '\']');
 }
