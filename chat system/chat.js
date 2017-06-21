@@ -1,5 +1,7 @@
 // Create WebSocket connection.
-const socket = new WebSocket('ws://localhost:1234/send');
+const socket = new WebSocket('ws://localhost:5000/chat');
+var person;
+var streamerid;
 
 // Connection opened
 socket.addEventListener('open', function (event) {
@@ -14,33 +16,43 @@ socket.addEventListener('message', function (event) {
 });
 
 window.addEventListener("beforeunload", function(e){
-    socket.send('Someone disconnected');
+    //socket.send('Someone disconnected');
 }, false);
 
 socket.onopen = function (event){
-	socket.send('Someone connected');
-}
+
+    getName();
+ 	//socket.send('Someone connected');
+console.log(event.data);
+ 	var text1 = document.getElementById("messages2");
+ 	text1.setAttribute("id", "message4")
+};
 
 
 socket.onclose = function (event) {
-    socket.send('closed');
-}
+    //socket.send('closed');
+};
 
 socket.onmessage = function(event){
 
 	var text = "";
-
-	if(isJson(event.data)) {
-
-        var msg = JSON.parse(event.data);
-        var text = msg.text;
-        var user = msg.name;
-
-        $('#messages').append(user + ":\n" + text + "<br \>");
+console.log(event.data);
+	if(person === null || person === ""){
+        getName();
     }else {
-        $('#messages').append(event.data + "<br \>");
+
+        if (isJson(event.data)) {
+
+            // var msg = JSON.parse(event.data);
+            // var text = msg.text;
+            // var user = msg.name;
+
+            $('#messages').append(user + ":\n" + text + "<br \>");
+        } else {
+            $('#messages').append(event.data + "<br \>");
+        }
     }
-}
+};
 
 function isJson(str) {
     try {
@@ -51,6 +63,20 @@ function isJson(str) {
     return true;
 }
 
+function join(json){
+    return socket.send(JSON.stringify(json));
+}
+
+function getName(){
+    person = prompt("Please enter your name", "Harry Potter");
+
+    if (person == null || person == "") {
+        person = prompt("Please enter a name", "");
+    } else {
+        //socket.send("NAME " + person);
+    }
+}
+
 //send to all users
 $(document).ready( function() {
 
@@ -58,17 +84,17 @@ $(document).ready( function() {
     $('form').submit(function () {
         //msg object with data from the server
         var msg = {
-            type: "message",
-            text: document.getElementById("text").value,
-            name: document.getElementById("user").value,
-            date: Date.now()
+
+            //name: person,
+            StreamID: "Hallo",
+            Timestamp: Date.now(),
+            Message: document.getElementById("text").value,
+            ActionType: 1
         };
-
-        socket.send(JSON.stringify(msg));
-
+console.log(msg);
+        join(msg);
         document.getElementById("text").value = "";
 
         event.preventDefault();
     });
-
 });
