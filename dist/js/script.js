@@ -16,18 +16,8 @@ $(document).ready(function(){
   // Show register form on click.
 	$('#register-form-link').on("click", showRegister);
 
-  // If button on keyboard is pressed.
-  $(this).keyup(function(e) {
-      // If Escape is pressed.
-       if (e.keyCode == 27) {
-         $(document).find(".isFullscreen").removeClass("isFullscreen");
-         return false;
-      }
-  });
 
 });
-
-
 
 // Temporary interval to test the chat.
 window.setInterval(function() {
@@ -42,7 +32,7 @@ window.setInterval(function() {
     var scrolledToBottom = checkScroll(chat);
 
     //Add comment to chatbox.
-    $(chat).append('<div class="bubble"> <span>[Name user]</span>: <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span> </div>');
+    //$(chat).append('<div class="bubble"> <span>[Name user]</span>: <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span> </div>');
 
     // Chatbox stuck to bottom if scrolled all the way down.
     if(scrolledToBottom == true) {
@@ -94,7 +84,6 @@ function fullscreenVideo() {
     return false;
   } else {
     video.fullscreen();
-    document.addEventListener('keyup', keyUp, false);
     video.parent().addClass("isFullscreen");
     return false;
   }

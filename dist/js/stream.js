@@ -9,8 +9,10 @@ if(localStorage.getItem('trustedCerts') === null)
 
 var trustedCertificates = JSON.parse(localStorage.getItem('trustedCerts'));
 
+var ipAddress = 'ws://192.168.2.4:5000/receive';
+
 //Open a websocket for a list of streams
-var listSocket = new WebSocket('ws://188.226.164.87/server/receive');
+var listSocket = new WebSocket(ipAddress);
 
 listSocket.onerror = function(error) {
   console.error('WebSocket Error:');
@@ -29,10 +31,10 @@ var videoPlayers = [];
 
 function switchStream(id, playerNumber)
 {
-  if(typeof videoPlayers[playerNumber] === "undefined")
+  if(typeof videoPlayers[playerNumber] === 'undefined' || videoPlayers[playerNumber] === null)
     {
         videoPlayers[playerNumber] = new VideoPlayer(document.getElementById('videoplayer' + playerNumber));
-        videoPlayers[playerNumber].openWebSocket(id);
+        videoPlayers[playerNumber].openWebSocket(ipAddress, id);
     }
     else
     {
@@ -46,6 +48,13 @@ function switchStream(id, playerNumber)
     });
 
 }
+
+function closeVideoPlayer(videoPlayerNumber)
+{
+    videoPlayers[videoPlayerNumber].close();
+    videoPlayers[videoPlayerNumber] = null;
+}
+
 
 function askTrustPublicKey(pubKey, videoPlayer)
 {
@@ -87,7 +96,7 @@ function askTrustPublicKey(pubKey, videoPlayer)
 }
 
 videoPlayers[1] = new VideoPlayer(document.getElementById('videoplayer1'));
-videoPlayers[1].openWebSocket();
+videoPlayers[1].openWebSocket(ipAddress);
 
 var streamsList = document.getElementsByClassName('streamslist');
 
@@ -125,7 +134,23 @@ listSocket.onmessage = function(event){
           //createTextNode() is used to safely insert the stream ID without any XSS.
           let anchor = document.createElement('a');
           anchor.href = '#';
-          anchor.appendChild(document.createTextNode(stream.ClientID));
+
+          let streamName;
+          if(stream.Title)
+          {
+              streamName = stream.Title;
+          }
+          else if(stream.StreamerName)
+          {
+              streamName = stream.StreamerName;
+              li.dataset.streamername = stream.StreamerName;
+          }
+          else
+          {
+              streamName = stream.ClientID;
+          }
+
+          anchor.appendChild(document.createTextNode(streamName));
           li.appendChild(anchor);
 
           for(let streamlist of streamsList)
@@ -149,8 +174,26 @@ $(document).on('click', '.select-stream', function(e){
 });
 
 $(document).on("click", ".streamslist > li", function() {
+  var streamerName = $(this).data('streamername');
+  var streamerId = $(this).data('streamid');
+  var element = $(this).closest('.row').find('.chat-head > span');
 
-  switchStream($(this).data('streamid'), Number($(this).closest(".video-outside").find('div.video').data('player')));
+  if(streamerName) {
+    element.text(streamerName);
+  } else {
+    element.text(streamerId);
+  }
 
-    switchStream($(this).data('streamid'), Number($(this).closest('div.chat').prev().data('player')));
+  switchStream(streamerId, Number($(this).closest(".video-outside").find('div.video').data('player')));
+});
+
+$(document).on('click', '.exit-stream', function() {
+
+  var player = $(this).parent().parent().siblings();
+
+  closeVideoPlayer(player.data('player'));
+    $(this).closest('div').find(".inside").attr("id", "");
+  player.parent().css('display', 'none');
+  player.parent().siblings('button').show();
+
 });
