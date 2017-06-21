@@ -9,7 +9,7 @@ if(localStorage.getItem('trustedCerts') === null)
 
 var trustedCertificates = JSON.parse(localStorage.getItem('trustedCerts'));
 
-var ipAddress = 'ws://145.49.35.215:5000/receive';
+var ipAddress = 'ws://192.168.2.4:5000/receive';
 
 //Open a websocket for a list of streams
 var listSocket = new WebSocket(ipAddress);
