@@ -84,7 +84,7 @@ function joinChat(streamerID) {
     var msg = {
 
         //name: person,
-        StreamID: streamerID,
+        StreamId: streamerID,
         Timestamp: Date.now(),
         ActionType: 2
     };
@@ -102,7 +102,7 @@ $(document).ready(function () {
 
         var msg = {
             Name: person,
-            StreamID: streamId,
+            StreamId: streamId,
             Timestamp: Date.now(),
             Message: $(this).closest('div').find("#focusedInput").val(),
             ActionType: 1
@@ -121,6 +121,7 @@ $(document).ready(function () {
         var streamId = $(this).data('streamid');
         joinChat(streamId); // get id of clicked li
         $(this).closest('div').find(".inside").attr("streamid", streamId);
+        $(this).closest('div').find('.inside').empty();
     });
 });
 
@@ -128,6 +129,6 @@ function addMessage(msgObj) {
     var text = msgObj.Message;
     var user = msgObj.Name;
 
-    //$( text).appendTo( msg.StreamID );
-    $('<div>' + user + ': ' + text + '</div>').appendTo('.inside[streamid=\'' + msgObj.StreamID + '\']');
+    //$( text).appendTo( msg.StreamId );
+    $('<div>' + user + ': ' + text + '</div>').appendTo('.inside[streamid=\'' + msgObj.StreamId + '\']');
 }
