@@ -73,7 +73,7 @@ function getName() {
     person = prompt("Please enter your name", "Unknown");
 
     if (person == null || person == "") {
-        person = prompt("Please enter a name", "Unknown");
+        person = "Unknown";
     } else {
         //socket.send("NAME " + person);
     }
