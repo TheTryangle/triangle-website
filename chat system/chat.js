@@ -55,9 +55,8 @@ socket.onmessage = function(event){
             var text = msg.Message;
             var user = msg.Name;
 
-            streamerid = msg.StreamID;
             //$( text).appendTo( msg.StreamID );
-            $("#" + streamerid).append('user' + ":\n" + text + "<br \>");
+            $('user' + ":\n" + text + "<br \>").appendTo("#" + msg.StreamID);
         } else {
             $(".inside").find(".inside").append(event.data + "<br \>");
         }
