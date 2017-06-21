@@ -1,4 +1,5 @@
 // Create WebSocket connection.
+const socket = new WebSocket('ws://188.226.164.87/server/chat');
 var person;
 
 // Connection opened
