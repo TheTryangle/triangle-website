@@ -11,17 +11,14 @@
               <div class="video" data-player="1">
                 <video id="videoplayer1" autoplay></video>
                 <div class="stream-controls">
-                  <div>
-                    <span class="stream-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
-                  </div>
-                  <button type="button" class="mute">Mute</button>
-                  <button type="button" class="fullscreen">Full-Screen</button>
+                  <button type="button" class="stream-button mute">Mute</button>
+                  <button type="button" class="stream-button fullscreen">Fullscreen</button>
                 </div>
               </div>
               <div class="chat">
                 <div class="chat-head">
                   <span>[Name streamer]</span>
-                  <button type="button" class="exit-stream"></button>
+                  <button type="button" class="stream-button exit-stream"></button>
                 </div>
                 <div class="chat-box">
                   <div class="inside"></div>
@@ -48,17 +45,14 @@
               <div class="video" data-player="2">
                 <video id="videoplayer2" autoplay></video>
                 <div class="stream-controls">
-                  <div>
-                    <span class="stream-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
-                  </div>
-                  <button type="button" class="mute">Mute</button>
-                  <button type="button" class="fullscreen">Full-Screen</button>
+                  <button type="button" class="stream-button mute">Mute</button>
+                  <button type="button" class="stream-button fullscreen">Fullscreen</button>
                 </div>
               </div>
               <div class="chat">
                 <div class="chat-head">
                   <span>[Name streamer]</span>
-                  <button type="button" class="exit-stream"></button>
+                  <button type="button" class="stream-button exit-stream"></button>
                 </div>
                 <div class="chat-box">
                   <div class="inside"></div>
@@ -88,17 +82,14 @@
               <div class="video" data-player="3">
                 <video id="videoplayer3" autoplay></video>
                 <div class="stream-controls">
-                  <div>
-                    <span class="stream-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
-                  </div>
-                  <button type="button" class="mute">Mute</button>
-                  <button type="button" class="fullscreen">Full-Screen</button>
+                  <button type="button" class="stream-button mute">Mute</button>
+                  <button type="button" class="stream-button fullscreen">Fullscreen</button>
                 </div>
               </div>
               <div class="chat">
                 <div class="chat-head">
                   <span>[Name streamer]</span>
-                  <button type="button" class="exit-stream"></button>
+                  <button type="button" class="stream-button exit-stream"></button>
                 </div>
                 <div class="chat-box">
                   <div class="inside"></div>
@@ -125,17 +116,14 @@
               <div class="video" data-player="4">
                 <video id="videoplayer4" autoplay></video>
                 <div class="stream-controls">
-                  <div>
-                    <span class="stream-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
-                  </div>
-                  <button type="button" class="mute">Mute</button>
-                  <button type="button" class="fullscreen">Full-Screen</button>
+                  <button type="button" class="stream-button mute">Mute</button>
+                  <button type="button" class="stream-button fullscreen">Fullscreen</button>
                 </div>
               </div>
               <div class="chat">
                 <div class="chat-head">
                   <span>[Name streamer]</span>
-                  <button type="button" class="exit-stream"></button>
+                  <button type="button" class="stream-button exit-stream"></button>
                 </div>
                 <div class="chat-box">
                   <div class="inside"></div>

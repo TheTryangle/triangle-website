@@ -143,6 +143,7 @@ listSocket.onmessage = function(event){
           else if(stream.StreamerName)
           {
               streamName = stream.StreamerName;
+              li.dataset.streamername = stream.StreamerName;
           }
           else
           {
@@ -173,9 +174,17 @@ $(document).on('click', '.select-stream', function(e){
 });
 
 $(document).on("click", ".streamslist > li", function() {
+  var streamerName = $(this).data('streamername');
+  var streamerId = $(this).data('streamid');
+  var element = $(this).closest('.row').find('.chat-head > span');
 
-  switchStream($(this).data('streamid'), Number($(this).closest(".video-outside").find('div.video').data('player')));
+  if(streamerName) {
+    element.text(streamerName);
+  } else {
+    element.text(streamerId);
+  }
 
+  switchStream(streamerId, Number($(this).closest(".video-outside").find('div.video').data('player')));
 });
 
 $(document).on('click', '.exit-stream', function() {

@@ -25,7 +25,7 @@ body {padding-top:60px; overflow:hidden;}
 .select-stream:hover {background-color: #00a379;}
 .stream video {display:block;width: 100%;max-height: 100%;}
 .stream video * {transition:.3s;}
-.stream-controls {position:absolute;top: 0;left: 0;height: 100%;width: 100%; display:none;}
+.stream-controls {position:absolute;top: 0;left: 0;height: 100%;width: 100%;display:none;z-index: 9999999999;}
 .stream-controls * {color:#000;}
 .mute {position:absolute; left:0; bottom:0;}
 .fullscreen {position:absolute; right:0; bottom:0;}
@@ -40,13 +40,14 @@ video::-webkit-media-controls {display:none!important;}
 .chat {width:290px;display: inline-block;height: 100%;}
 .chat-head {background-color:#323232;z-index:9;height:30px;display:table;width:100%;padding-left:10px;position: relative;-webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2); -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2); box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);}
 .chat-head > span {display:table-cell; vertical-align:middle;}
-.exit-stream {position: absolute;transition:.3s; background-color: #00bc8c;outline:none;display: table-cell;vertical-align: middle;right: 0;height: 100%;border: 5px solid #323232;font-size: 12px;font-weight: bold;line-height: 12px;}
+.stream-button {color:#fff; transition:.3s; background-color: #00bc8c;outline:none;font-weight: bold; border:none; text-transform:uppercase;}
+.stream-button:hover {background-color:#008966;}
+.exit-stream {position: absolute; display: table-cell;vertical-align: middle;right: 0;height: 100%; border: 5px solid #323232;font-size: 12px; line-height: 12px;}
 .exit-stream::after {content:"EXIT STREAM"; color:#fff;}
-.exit-stream:hover {background-color:#008966;}
 .chat-box {height: calc(100% - 70px);width:100%;background-color: #282828;}
 .chat-box .inside {height:100%; padding:0 10px 10px 10px; overflow-y:scroll; overflow-x:hidden;}
 .chat-box input[type="text"] {height: 30px;width: calc(100% - 50px);float: left;line-height: 30px;padding-left: 10px;}
-.chat-box input[type="button"] {height: 30px; width: 45px; padding: 0; float: right;}
+.chat-box input[type="button"] {height: 30px;width: 45px;padding: 0;float: right;text-transform: uppercase;font-weight: bold;}
 .chat-form {background-color: #00bc8c;padding: 5px;}
 .bubble {width:100%;}
 .bubble * {font-size: 13px;line-height: 13px;}
