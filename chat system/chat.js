@@ -7,7 +7,6 @@ var streamerid;
 socket.addEventListener('open', function (event) {
 
     //socket.send('Hello Server');
-
 });
 
 // Listen for messages
@@ -23,9 +22,9 @@ socket.onopen = function (event){
 
     getName();
  	//socket.send('Someone connected');
-console.log(event.data);
- 	var text1 = document.getElementById("messages2");
- 	text1.setAttribute("id", "message4")
+// console.log(event.data);
+//  	var text1 = document.getElementById("messages2");
+//  	text1.setAttribute("id", "message4")
 };
 
 
