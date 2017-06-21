@@ -19,9 +19,14 @@ window.addEventListener("beforeunload", function(e){
     console.log("test");
 }, false);
 
+socket.onerror = function (error) {
+    console.error('WebSocket Error:');
+    console.error(error);
+}
+
 socket.onopen = function (event){
 
-    getName();
+    //getName();
  	//socket.send('Someone connected');
 // console.log(event.data);
 //  	var text1 = document.getElementById("messages2");
@@ -30,14 +35,18 @@ socket.onopen = function (event){
 
 
 socket.onclose = function (event) {
-    //socket.send('closed');
+    var msg = {
+        Timestamp: Date.now(),
+        ActionType: 3
+    };
+    join(msg);
 };
 
 socket.onmessage = function(event){
 
-	var text = "";
+    var text = "";
     console.log(event.data);
-	if(person === null || person === ""){
+    if(person === null || person === ""){
         getName();
     }else {
         if (isJson(event.data)) {
@@ -46,9 +55,9 @@ socket.onmessage = function(event){
             var text = msg.Message;
             //var user = msg.name;
 
-            $(this).parent().prev().append('Someone' + ":\n" + text + "<br \>");
+            $(".inside").append('Someone' + ":\n" + text + "<br \>");
         } else {
-            $(this).parent().prev().append(event.data + "<br \>");
+            $(".inside").find(".inside").append(event.data + "<br \>");
         }
     }
 };
@@ -76,14 +85,13 @@ function getName(){
     }
 }
 
-function joinChat() {
+function joinChat(streamerID) {
 
     var msg = {
 
         //name: person,
-        StreamID: "Hallo",
+        StreamID: streamerID,
         Timestamp: Date.now(),
-        Message: "",
         ActionType: 2
     };
     join(msg);
@@ -91,7 +99,6 @@ function joinChat() {
 
 //send to all users
 $(document).ready( function() {
-
     //console.log('Test');
     $('form').submit(function () {
         //msg object with data from the server
