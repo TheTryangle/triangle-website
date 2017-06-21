@@ -17,7 +17,7 @@
 <form id="streamid" onsubmit="event.preventDefault();" action="">
     <input id="text" autocomplete="off" required/>
 </form>
-    <button onclick="joinChat()" type="button">Join</button>
+    <button onclick="joinChat('streamer1')" type="button">Join</button>
 </div>
 
 <div id="messages2">
@@ -27,7 +27,7 @@
         <input id="text2" autocomplete="off" required/>
 
     </form>
-    <button onclick="joinChat()" type="button">Join</button>
+    <button onclick="joinChat('streamer2')" type="button">Join</button>
 
 </div>
 
@@ -37,7 +37,7 @@
     <form id="streamid3" onsubmit="event.preventDefault();" action="">
         <input id="text3" autocomplete="off" required/>
     </form>
-    <button onclick="joinChat()" type="button">Join</button>
+    <button onclick="joinChat('streamer1')" type="button">Join</button>
 
 </div>
 
@@ -47,7 +47,7 @@
     <form id="streamid4" onsubmit="event.preventDefault();" action="">
         <input id="text4" autocomplete="off" required/>
     </form>
-    <button onclick="joinChat()" type="button">Join</button>
+    <button onclick="joinChat('streamer2')" type="button">Join</button>
 </div>
 
 </body>
