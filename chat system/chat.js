@@ -21,15 +21,6 @@ window.addEventListener("beforeunload", function(e){
 socket.onopen = function (event){
 
     getName();
-    var msg = {
-
-        //name: person,
-        StreamID: "Hallo",
-        Timestamp: Date.now(),
-        Message: "",
-        ActionType: 2
-    };
-    join(msg);
  	//socket.send('Someone connected');
 // console.log(event.data);
 //  	var text1 = document.getElementById("messages2");
@@ -44,7 +35,7 @@ socket.onclose = function (event) {
 socket.onmessage = function(event){
 
 	var text = "";
-console.log(event.data);
+    console.log(event.data);
 	if(person === null || person === ""){
         getName();
     }else {
@@ -85,7 +76,16 @@ function getName(){
 }
 
 function joinChat() {
-    
+
+    var msg = {
+
+        //name: person,
+        StreamID: "Hallo",
+        Timestamp: Date.now(),
+        Message: "",
+        ActionType: 2
+    };
+    join(msg);
 }
 
 //send to all users
@@ -104,6 +104,7 @@ $(document).ready( function() {
         };
 //console.log(msg);
         join(msg);
+        $('#messages').append('Someone' + ":\n" + document.getElementById("text").value + "<br \>");
         document.getElementById("text").value = "";
 
         event.preventDefault();
