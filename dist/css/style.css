@@ -48,6 +48,7 @@ video::-webkit-media-controls {display:none!important;}
 .chat-box .inside {height:100%; padding:0 10px 10px 10px; overflow-y:scroll; overflow-x:hidden;}
 .chat-box input[type="text"] {height: 30px;width: calc(100% - 50px);float: left;line-height: 30px;padding-left: 10px;}
 .chat-box input[type="button"] {height: 30px;width: 45px;padding: 0;float: right;text-transform: uppercase;font-weight: bold;}
+.chat-box input[type="submit"] {height: 30px;width: 45px;padding: 0;float: right;text-transform: uppercase;font-weight: bold;}
 .chat-form {background-color: #00bc8c;padding: 5px;}
 .bubble {width:100%;}
 .bubble * {font-size: 13px;line-height: 13px;}
