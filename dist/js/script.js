@@ -42,7 +42,7 @@ window.setInterval(function() {
     var scrolledToBottom = checkScroll(chat);
 
     //Add comment to chatbox.
-    $(chat).append('<div class="bubble"> <span>[Name user]</span>: <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span> </div>');
+    //$(chat).append('<div class="bubble"> <span>[Name user]</span>: <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span> </div>');
 
     // Chatbox stuck to bottom if scrolled all the way down.
     if(scrolledToBottom == true) {

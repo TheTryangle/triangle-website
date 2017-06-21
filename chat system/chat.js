@@ -54,9 +54,9 @@ socket.onmessage = function(event){
             var text = msg.Message;
             //var user = msg.name;
 
-            $('#messages').append('Someone' + ":\n" + text + "<br \>");
+            $(this).parent().prev().append('Someone' + ":\n" + text + "<br \>");
         } else {
-            $('#messages').append(event.data + "<br \>");
+            $(this).parent().prev().append(event.data + "<br \>");
         }
     }
 };
@@ -105,16 +105,22 @@ $(document).ready( function() {
         var msg = {
 
             //name: person,
-            StreamID: "streamer1",
+            StreamID: streamerid,
             Timestamp: Date.now(),
-            Message: document.getElementById("text").value,
+            Message: $(this).closest('div').find("#focusedInput").val(),
             ActionType: 1
         };
 //console.log(msg);
         join(msg);
-        //$('#messages').append('Someone' + ":\n" + document.getElementById("text").value + "<br \>");
-        document.getElementById("text").value = "";
+        //$('#messages').append('Someone' + ":\n" + document.getElementById("focusedInput").value + "<br \>")
+        $(this).parent().prev().append('Someone' + ":\n" + $(this).closest('div').find("#focusedInput").val()  + "<br \>");
+        $(this).closest('div').find("#focusedInput").val("");
 
         event.preventDefault();
+    });
+
+    $(document).on("click", ".streamslist > li", function() {
+        joinChat($(this).data('streamid')); // get id of clicked li
+        streamerid = $(this).data('streamid');
     });
 });
