@@ -1,5 +1,5 @@
 // Create WebSocket connection.
-const socket = new WebSocket('ws://localhost:5000/chat');
+const socket = new WebSocket('ws://145.49.35.215:5000/chat');
 var person;
 var streamerid;
 
@@ -53,9 +53,10 @@ socket.onmessage = function(event){
 
             var msg = JSON.parse(event.data);
             var text = msg.Message;
-            //var user = msg.name;
+            var user = msg.Name;
 
-            $(".inside").append('Someone' + ":\n" + text + "<br \>");
+            //$( text).appendTo( msg.StreamID );
+            $("#" + streamerid).append('user' + ":\n" + text + "<br \>");
         } else {
             $(".inside").find(".inside").append(event.data + "<br \>");
         }
@@ -104,7 +105,7 @@ $(document).ready( function() {
         //msg object with data from the server
         var msg = {
 
-            //name: person,
+            Name: "Someone",
             StreamID: streamerid,
             Timestamp: Date.now(),
             Message: $(this).closest('div').find("#focusedInput").val(),
@@ -122,5 +123,6 @@ $(document).ready( function() {
     $(document).on("click", ".streamslist > li", function() {
         joinChat($(this).data('streamid')); // get id of clicked li
         streamerid = $(this).data('streamid');
+        $(this).closest('div').find(".inside").attr("id", streamerid);
     });
 });

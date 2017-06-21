@@ -2,12 +2,11 @@ class StreamChat {
 
     constructor(streamerID, streamerName, streamChannel,) {
         this.streamerID = streamerID;
-        this.streamerName = streamerName;
         this.streamChannel = streamChannel;
 
         this.clientName;
 
-        this.socket = new WebSocket("ws://localhost:5000/chat");
+        this.socket = new WebSocket("ws://145.49.35.215:5000/chat");
         this.connected = false;
 
     }

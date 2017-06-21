@@ -27,7 +27,7 @@
                   <div class="inside"></div>
                   <div class="chat-form">
                     <form class="" onsubmit="event.preventDefault();" action="#" method="post">
-                      <input class="form-control" id="focusedInput" name="chat-input" type="text" placeholder="Type to chat..">
+                      <input class="form-control" id="focusedInput" name="chat-input" type="text" placeholder="Type to chat.." required>
                       <input class="btn btn-success chat-button" name="chat-button" type="button" value="Send">
                     </form>
                     <div class="clearfix"></div>
