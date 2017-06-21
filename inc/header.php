@@ -20,6 +20,7 @@
       <script type="text/javascript" src="dist/js/VideoPlayer.js"></script>
       <script type="text/javascript" src="dist/js/stream.js" defer></script>
       <script type="text/javascript" src="dist/js/script.js"></script>
+      <script type="text/javascript" src="chat system/chat.js" defer></script>
   </head>
   <body>
 
