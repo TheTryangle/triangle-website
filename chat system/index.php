@@ -1,6 +1,4 @@
 <html>
-
-<body>
 <style>
 #messages, #messages2, #messages3, #messages4{
     border-style: solid;
@@ -11,48 +9,49 @@
     margin: 1%;
 }
 </style>
-<div id="messages">
-</div>
+<body>
+
+<div id="channel-1"></div>
 <div id="input">
-<form id="streamid" onsubmit="event.preventDefault();" action="">
-    <input id="text" autocomplete="off" required/>
-</form>
-    <button onclick="joinChat('streamer1')" type="button">Join</button>
-</div>
-
-<div id="messages2">
-</div>
-<div id="input2">
-    <form id="streamid2" onsubmit="event.preventDefault();" action="">
-        <input id="text2" autocomplete="off" required/>
-
+    <form id="form-1" onsubmit="event.preventDefault();" action="">
+        <input id="text-1" autocomplete="off" required/>
     </form>
-    <button onclick="joinChat('streamer2')" type="button">Join</button>
 
+    <button onclick="joinChat()" type="button">Join</button>
 </div>
 
-<div id="messages3">
-</div>
-<div id="input3">
-    <form id="streamid3" onsubmit="event.preventDefault();" action="">
-        <input id="text3" autocomplete="off" required/>
+<div id="channel-2"></div>
+<div id="input">
+    <form id="form-2" onsubmit="event.preventDefault();" action="">
+        <input id="text-2" autocomplete="off" required/>
     </form>
-    <button onclick="joinChat('streamer1')" type="button">Join</button>
 
+    <button onclick="joinChat()" type="button">Join</button>
 </div>
 
-<div id="messages4">
-</div>
-<div id="input4">
-    <form id="streamid4" onsubmit="event.preventDefault();" action="">
-        <input id="text4" autocomplete="off" required/>
+<div id="channel-3"></div>
+<div id="input">
+    <form id="form-3" onsubmit="event.preventDefault();" action="">
+        <input id="text-3" autocomplete="off" required/>
     </form>
-    <button onclick="joinChat('streamer2')" type="button">Join</button>
+
+    <button onclick="joinChat()" type="button">Join</button>
+</div>
+
+<div id="channel-4"></div>
+<div id="input">
+    <form id="form-4" onsubmit="event.preventDefault();" action="">
+        <input id="text-4" autocomplete="off" required/>
+    </form>
+
+    <button onclick="joinChat()" type="button">Join</button>
 </div>
 
 </body>
 
 <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+<script src="StreamChat.js"></script>
 <script src="chat.js"></script>
+<!--<script src="test.js"></script>-->
 
 </html>

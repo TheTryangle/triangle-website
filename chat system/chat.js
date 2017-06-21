@@ -5,28 +5,25 @@ var streamerid;
 
 // Connection opened
 socket.addEventListener('open', function (event) {
-
     //socket.send('Hello Server');
+    console.log("Send to server");
 });
 
 // Listen for messages
 socket.addEventListener('message', function (event) {
-    //console.log('Message from server', event.data);
+    console.log('Message from server', event.data);
 });
 
 window.addEventListener("beforeunload", function(e){
     //socket.send('Someone disconnected');
+    console.log("test");
 }, false);
-
-socket.onerror = function (error) {
-    console.error('WebSocket Error:');
-    console.error(error);
-}
 
 socket.onopen = function (event){
 
-    //getName();
+    getName();
  	//socket.send('Someone connected');
+// console.log(event.data);
 //  	var text1 = document.getElementById("messages2");
 //  	text1.setAttribute("id", "message4")
 };
@@ -34,11 +31,6 @@ socket.onopen = function (event){
 
 socket.onclose = function (event) {
     //socket.send('closed');
-    var msg = {
-        Timestamp: Date.now(),
-        ActionType: 3
-    };
-    join(msg);
 };
 
 socket.onmessage = function(event){
@@ -84,13 +76,14 @@ function getName(){
     }
 }
 
-function joinChat(streamerid) {
+function joinChat() {
 
     var msg = {
 
         //name: person,
-        StreamID: streamerid,
+        StreamID: "Hallo",
         Timestamp: Date.now(),
+        Message: "",
         ActionType: 2
     };
     join(msg);
@@ -105,14 +98,14 @@ $(document).ready( function() {
         var msg = {
 
             //name: person,
-            StreamID: "streamer1",
+            StreamID: "Hallo",
             Timestamp: Date.now(),
             Message: document.getElementById("text").value,
             ActionType: 1
         };
 //console.log(msg);
         join(msg);
-        //$('#messages').append('Someone' + ":\n" + document.getElementById("text").value + "<br \>");
+        $('#messages').append('Someone' + ":\n" + document.getElementById("text").value + "<br \>");
         document.getElementById("text").value = "";
 
         event.preventDefault();
